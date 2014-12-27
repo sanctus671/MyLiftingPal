@@ -1,0 +1,232 @@
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Delete Set</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this set?<br/>
+                <div class="delete-result-id" style="display:none;"></div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary accept-delete" data-dismiss="modal">Yes</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Add New</h4>
+            </div>
+            <div class="modal-body" style="padding-bottom: 0px;">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="modal-tab-exercises active"><a href="javascript:void(0);">Exercises</a></li>
+                    <li role="presentation" class="modal-tab-workouts"><a href="javascript:void(0);">Workouts</a></li>
+                    <li role="presentation" class="modal-tab-programs"><a href="javascript:void(0);">Programs</a></li>
+                </ul>
+                <div class="row modal-exercises" style="">
+                    <div class="col-md-6 recent-exercises" style="padding-left: 40px; padding-right: 40px;">
+                    <div class="row">&nbsp;</div> 
+                    <h4>Recent</h4> 
+                    <div class="modal-recent-items">
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>                           
+                    <div class="row">Bench Press <input type="checkbox" value=""></div> 
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>                           
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>    
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>  
+                    </div>
+                     
+                    <nav>
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    </div>
+                    <div class="col-md-6 search-exercises" style="border-left: 1px solid #e5e5e5; padding-left: 40px; padding-right: 40px;">
+                    <div class="row">&nbsp;</div>         
+                    <div class="row input-group panel-close" style="display: table;">
+                        <input type="text" class="form-control search-form" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search-btn" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                    <div class="modal-search-results">
+                    <div class="row">&nbsp;</div>    
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>                           
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>    
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>
+                    <div class="row">Bench Press <input type="checkbox" value=""></div>                    
+                    </div>
+                    <nav>
+                        <ul class="pagination" style="margin-top: 27px;">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    </div>                    
+                    
+                </div>
+                
+                <div class="modal-workouts" style="display:none;">
+                    
+                </div>
+                
+                <div class="modal-programs" style="display:none;">
+                    
+                    
+                    
+                </div>
+                
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary accept-edit" data-dismiss="modal">Add</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Edit Set</h4>
+            </div>
+            <div class="modal-body">
+                <div class="edit-result-id" style="display:none;"></div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Reps</label>
+                            <div class="col-sm-5">
+                            <input type="number" class="form-control edit-result-reps" placeholder="Reps">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Set</label>
+                            <div class="col-sm-5">
+                            <input type="number" class="form-control edit-result-set" placeholder="Set">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">RPE</label>
+                            <div class="col-sm-5">
+                            <input type="number" class="form-control edit-result-rpe" placeholder="RPE">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Weight</label>
+                            <div class="col-sm-5">
+                            <input type="number" class="form-control edit-result-weight" placeholder="Weight">
+                        </div>
+                    </div>      
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">%1RM</label>
+                            <div class="col-sm-5">
+                            <input type="number" class="form-control edit-result-percentage" placeholder="Percentage">
+                        </div>
+                    </div>                      
+                </form>                
+                
+                
+                
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary accept-edit" data-dismiss="modal">Save</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Notes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-notes-contents"></div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-header">
+      <h1>My Diary</h1>
+      </div>
+
+<h3 style="text-align:center;"><a href="javascript:void(0)" class="fa fa-caret-left change-date-left"></a>  <span class="selected-date"></span><span class="selected-date-hidden" style="display:none;"></span> <a href="javascript:void(0)" class="fa fa-caret-right change-date-right"></a><span class="input-group date" style="display:initial;"><input type="text" class="form-control change-date-input" style="display:none;"><span class="input-group-addon" style="color:black;background-color:transparent;border:0px;display:initial;"><i class="fa fa-calendar fa-2x"></i></span></span></h3>
+      <div class="container main-contents" style="max-width:70%;">
+	  <div class="row"><div class="col-md-12">&nbsp;</div></div>
+	  <div class="headers row">
+        <div class="col-xs-6 exercise" >Exercise</div>
+		<div class="col-xs-1 details reps" style="background-color:#77b2c9; border-top-left-radius:5px; color:#fff; ">Reps</div>
+        <div class="col-xs-1 details set" style="background-color:#77b2c9; border-style: solid;border-color: #fff;border-top: none;border-bottom: none;color:#fff;">Set</div>
+		<div class="col-xs-1 details weight" style="background-color:#77b2c9; border-style: solid;border-color: #fff;border-top: none;border-bottom: none;border-left: none;color:#fff;">Weight</div>
+        <div class="col-xs-1 details rpe" style="background-color:#77b2c9; border-style: solid;border-color: #fff;border-top: none;border-bottom: none;border-left: none;color:#fff;">RPE</div>
+        <div class="col-xs-1 details percentage" style="background-color:#77b2c9; border-top-right-radius:5px;color:#fff; ">%1RM</div>	
+		<div class="col-xs-1 details add">&nbsp;</div>	
+      </div>
+	  <hr class="headers-hr" />
+	  <div class="my-exercises"></div>
+	  
+	<div class="row"><div class="col-md-12">&nbsp;</div></div>
+	<div class="row"><div class="col-md-12"><a href="javascript:void(0);" class="btn btn-default btn-circle-main"><i class="fa fa-plus fa-2x" style="line-height: 1.9 !important;"></i></a></div></div>	
+	  </div>

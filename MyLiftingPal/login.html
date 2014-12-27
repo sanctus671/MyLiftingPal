@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<meta name="author" content="MyLiftingPal" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+	<meta name="description" content="MyLiftingPal is an app that lets you easily track your lifting." />
+	<meta name="keywords"  content="myliftingpal, lifting, weight, pal" />
+	
+	<title>MyLiftingPal - Login</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/login.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+    <script src="js/mlp.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+    
+
+    <div class="omb_login">
+	<h3 class="omb_authTitle" style="height:100px; background-image: url('images/header.svg'); background-repeat: no-repeat; background-size: 500px 200px; background-position: center;margin-top: 0px; margin-bottom: -30px;"></h3>
+    	
+		<div class="main-logout-content" style="display:none;">
+
+			<h3 class="omb_authTitle login-form" >Already logged in!</h3>
+			<button class="btn btn-lg btn-primary btn-block logout-button" type="submit">Logout</button>
+			<div class="row omb_row-sm-offset-3 omb_loginOr">
+				<div class="col-xs-12 col-sm-6">
+				<span class="omb_spanOr">or</span>	
+				<hr class="omb_hrOr">
+							
+			</div>
+			<h3 class="omb_authTitle login-form">Go to <a href="index.html" class="mlp-url">MyLiftingPal </a></h3>
+		</div>			
+		</div>
+		
+		
+		<div class="main-login-content">
+		<h3 class="omb_authTitle login-form">Login or <a href="javascript:void(0);" class="change-to-register"> Sign up <i class="fa fa-users"></i></a></h3>
+		<h3 class="omb_authTitle register-form"><a href="javascript:void(0);" class="change-to-login">Login</a> or Sign up <i class="fa fa-users"></i></h3>
+		<div class="row omb_row-sm-offset-3 omb_socialButtons">
+    	    <div class="col-xs-4 col-sm-4">
+		        <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+			        <i class="fa fa-facebook"></i>
+		        </a>
+	        </div>
+        	<div class="col-xs-4 col-sm-4">
+		        <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+			        <i class="fa fa-twitter"></i>
+		        </a>
+	        </div>	
+        	<div class="col-xs-4 col-sm-4">
+		        <a href="#" class="btn btn-lg btn-block omb_btn-google">
+			        <i class="fa fa-google-plus"></i>
+
+		        </a>
+	        </div>	
+		</div>
+
+		<div class="row omb_row-sm-offset-3 omb_loginOr">
+			<div class="col-xs-12 col-sm-6">
+				<hr class="omb_hrOr">
+				<span class="omb_spanOr">or</span>
+			</div>
+		</div>
+
+		<div class="row omb_row-sm-offset-3">
+			<div class="col-xs-12 col-sm-6">	
+			    <form class="omb_loginForm login-form" action="" autocomplete="off" method="POST">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" class="form-control username" name="username" required placeholder="Username">
+					</div>
+					<span class="help-block"></span>
+										
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input  type="password" class="form-control password" name="password" required placeholder="Password">
+					</div>
+                    <span class="help-block info"></span>
+
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+				</form>
+				
+			    <form class="omb_loginForm register-form " style="display:none;" action="" autocomplete="off" method="POST">
+
+					<input type="text" class="form-control username" required name="username" placeholder="Username">
+
+					<span class="help-block"></span>
+
+						<input type="email" class="form-control email" required name="email" placeholder="Email">
+				
+					<span class="help-block"></span>
+										
+
+					<input  type="password" class="form-control password" required name="password" placeholder="Password">
+
+					<span class="help-block"></span>
+
+					<input  type="password" class="form-control password2" required name="password2" placeholder="Password (again)">
+
+					<span class="help-block info"></span>
+
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+
+				</form>	
+
+		<div class="row register-form" style="padding-top: 10px;">
+
+			<div class="col-xs-12">
+				<p>
+					<a href="javascript:void(0);" class="terms">Terms and Conditions</a>
+				</p>
+			</div>
+		</div>					
+				
+			</div>
+    	</div>
+		<div class="row omb_row-sm-offset-3 extra-stuff login-form">
+			<div class="col-xs-12 col-sm-4">
+				<label class="checkbox">
+					<input type="checkbox" value="remember-me">Remember Me
+				</label>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<p class="omb_forgotPwd">
+					<a href="javascript:void(0);" class="forgot-pass">Forgot password?</a>
+				</p>
+			</div>
+		</div>	    	
+		</div>	
+	
+	</div>
+
+
+
+        </div>
+<script>
+var mlpObject = mlp('d22c3cf2949cd85a21ddcf725f71dcef');
+
+
+
+$(".register-form").hide();
+$(".main-logout-content").hide();
+
+if (mlpObject.session !== ""){
+		$(".main-login-content").hide();
+		$(".main-logout-content").show();
+}
+
+
+$(".change-to-login").click(function(){
+	$(".register-form").hide();
+	$(".login-form").fadeIn("slow");
+});
+$(".change-to-register").click(function(){
+	$(".login-form").hide();
+	$(".register-form").fadeIn("slow");
+});
+
+
+$(".logout-button").click(function(){
+	mlpObject.logout();
+	$(".main-logout-content").hide();
+	$(".main-login-content").fadeIn("slow");
+	
+});
+
+$(".register-form").on("submit",function(e){
+	e.preventDefault();
+	var form = $(this);
+    var username = $('.username', form).val();
+	var email = $('.email', form).val();
+	var password = $('.password', form).val();	
+	var password2 = $('.password2', form).val();
+	if (password != password2){
+		$('.info', form).html("Password didn't match");
+		return;
+	}
+	
+	mlpObject.createUser(email, username, password);
+	if (mlpObject.result["success"] == true){
+		$('.info', form).html("");
+		$(".register-form").hide();
+		$(".login-form").fadeIn("slow");		
+	}
+	else{
+		$('.info', form).html(mlpObject.result["errormsg"]);
+	}
+
+});
+
+
+$(".login-form").on("submit",function(e){
+	e.preventDefault();
+	var form = $(this);
+    var username = $('.username', form).val();
+	var password = $('.password', form).val();	
+	mlpObject.login(username, password);
+	console.log(mlpObject.result["success"]);
+	if (mlpObject.result["success"] === true){
+		document.location.href="index.html";
+		$('.info', form).html("");
+		//$(".main-login-content").hide();
+		//$(".main-logout-content").fadeIn("slow");		
+		
+	}
+	else{
+		$('.info', form).html(mlpObject.result["errormsg"]);
+	}
+});
+
+$(".forgot-pass").click(function(){
+	console.log("too bad");
+
+});
+
+
+</script>		
+		</body>
+		
+		</html>

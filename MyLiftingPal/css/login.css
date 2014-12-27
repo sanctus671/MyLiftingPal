@@ -1,0 +1,139 @@
+/*
+    Note: It is best to use a less version of this file ( see http://css2less.cc
+    For the media queries use @screen-sm-min instead of 768px.
+    For .omb_spanOr use @body-bg instead of white.
+*/
+html { 
+  background: url(../images/login-bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body{
+transition: all 5s ease;
+background-color:transparent;
+}
+.container{
+width: 100%;
+
+}
+a {
+transition: all 0.5s ease;
+    color: #77b2c9;
+	}
+	
+a:hover, a:focus {
+    color: #25b8cc;
+	text-decoration:none;
+	}	
+	
+	
+
+.btn-primary{
+transition: all 0.5s ease;
+	background-color: #77b2c9;
+    border-color: #77b2c9;	
+
+}
+
+.btn-primary:hover{
+	background-color: #25b8cc;
+    border-color: #25b8cc;	
+
+}
+
+
+
+.omb_login{
+margin-left: 50px;
+width:500px;
+float:left;
+margin-top:5%;
+background-color:rgba(255,255,255,0.7);
+border-radius:10px;
+padding: 30px;
+padding-bottom: 25px;
+}
+.col-sm-6{
+width:100%;
+
+}
+@media (min-width: 768px) {
+    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+        /*margin-left: 25%;*/
+    }
+}
+.row.omb_row-sm-offset-3{
+text-align: center;
+
+
+}
+
+.extra-stuff{
+margin-left: 15%;
+width: 100%;
+}
+.omb_login .omb_authTitle {
+    text-align: center;
+	line-height: 300%;
+}
+.omb_socialButtons{
+	width:100%;
+	margin-left:25%;
+	margin-left: 0;
+
+}	
+.omb_login .omb_socialButtons a {
+	color: white; // In yourUse @body-bg 
+	opacity:0.9;
+}
+.omb_login .omb_socialButtons a:hover {
+    color: white;
+	opacity:1;    	
+}
+.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
+.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
+
+
+.omb_login .omb_loginOr {
+	position: relative;
+	font-size: 1.5em;
+	color: #aaa;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.omb_login .omb_loginOr .omb_hrOr {
+	background-color: #cdcdcd;
+	height: 1px;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+.omb_login .omb_loginOr .omb_spanOr {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: -0.0em;
+	margin-left: -1.5em;
+
+	width: 3em;
+	text-align: center;
+}			
+
+.omb_login .omb_loginForm .input-group.i {
+	width: 2em;
+}
+.omb_login .omb_loginForm  .help-block {
+    color: red;
+}
+
+	
+@media (min-width: 768px) {
+    .omb_login .omb_forgotPwd {
+        text-align: right;
+		margin-top:10px;
+ 	}		
+}
