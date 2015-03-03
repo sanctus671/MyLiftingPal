@@ -1,0 +1,378 @@
+<div class="modal fade" id="muscleModal" tabindex="-1" role="dialog" aria-labelledby="muscleModal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Determine muscle groups and exercise types</h4>
+            </div>
+            <div class="modal-body">
+                
+                <form>
+                    <div class="form-group  showfirst bodyarea">
+                        <label class="col-sm-12 control-label">Is this movement performed on your upper body, lower body or your core?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control  bodyarea-val">
+                                    <option value="" disabled selected>Select</option>
+                                    <option>Upper Body</option>
+                                    <option>Lower Body</option>
+                                    <option>Core</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group hidefirst iscircular" style="display:none;">
+                        <label class="col-sm-12 control-label">Is the movement circular?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control iscircular-val">
+                                    <option value="" disabled selected>Select</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group hidefirst ismovingaway" style="display:none;">
+                        <label class="col-sm-12 control-label ">Do you move the weight away from your body?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control ismovingaway-val">
+                                    <option value="" disabled selected>Select</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group hidefirst israisingheel" style="display:none;">
+                        <label class="col-sm-12 control-label ">Are you raising your heel?</label>
+                            <div class="col-sm-12">
+                                <select class="form-control israisingheel-val">
+                                    <option value="" disabled selected>Select</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                        </div>
+                    </div>                          
+                </form>                
+                
+                <div class="result-container" style="padding:70px 15px 0;">
+                Possible muscle groups and exercise types: <div class="current-results"></div>
+                </div>
+                
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="$('.form-control').val('');$('.showfirst').show();$('.hidefirst').hide();$('.current-results').html('');$('.result-container').css({'padding':'70px 15px 0'});$('.current-results').css({'font-weight':'normal'});" class="btn btn-default" data-dismiss="modal">Done</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="page-header">
+      <h1>Help</h1>
+</div>
+
+<div class="container main-contents" style="max-width:60%;">
+    <div class="row" style="min-width:730px;">
+        <div class="col-xs-9">
+            <h2  id="maindiary" class="page-header" style="margin-left: -15px;margin-top:0px;font-size:36px;margin-bottom:0px;">My Diary</h2>
+            <div id="maindiary-addingto" class="row">
+                <h3>Adding to your diary</h3>
+                
+                
+Your diary page is a record of all your lifting you have done each day. You can cycle through the days by using the arrows at the top of the page, or by clicking on the calendar icon and selected a specific day.
+<br/><br/>
+To add an exercise to the diary, click the circular plus button at the bottom of the page. 
+<img src="images/help/pic1.jpg" alt="Circular button"/>
+
+From here, a modal will popup allowing you to see all recently added exercises as well as a search section where you can search for specific exercises in the exercise database.
+<img src="images/help/pic2.jpg" alt="Add exercises"/>
+
+To add workouts and programs, follow the same steps. 
+<br/><br/>
+Adding a workout will automatically add the list of exercises in that workout to your diary. 
+
+<img src="images/help/pic3.jpg" alt="Add workout"/>
+
+Adding a program will automatically add the list of workouts to the specified days starting from the currently selected day in your diary.
+
+<img src="images/help/pic4.jpg" alt="Add program"/>
+
+Once you’ve added exercises, you can easily add new sets by clicking the smaller circular plus button next to the exercise.
+
+<img src="images/help/pic5.jpg" alt="Add new set"/>
+
+You can remove an entire set by click the circular cross button.
+
+<img src="images/help/pic6.jpg" alt="Delete exercise"/>
+
+Alternatively you can modify a singular set by expanding the set group for that exercise and toggling the settings menu.
+
+<img src="images/help/pic7.jpg" alt="Exercise set settings"/>
+
+From here you can edit or delete by clicking these buttons.
+
+            </div>
+            <div id="maindiary-rpe" class="row">
+                <h3>RPE explained</h3>
+                
+RPE stands for rated perceived exertion. It is a scale to determine the difficulty of a set on a given day. 
+
+<img src="images/help/pic8.jpg" alt="RPE chart"/>
+
+Every day brings different challenges. Some days you feel good and you hit your sets easily. Other days you feel bad and you question if you even lift. RPE is a scale that can help you adjust your training to suit the day’s circumstances. Instead of pushing for the weight you wrote in your workout, maybe instead try using an RPE system to auto regulate the weight based on how you feel. Many athletes have used this system and found it to be very beneficial for long term programming. 
+<br/><br/>
+Even if you don’t adjust your training by RPE, you can still use the scale as a tool to measure how hard a set was on that day so you can one day look back and see how far you have come when an RPE 10 becomes an RPE 8 with the same volume. 
+<br/><br/>
+An added benefit to using MyLiftingPal, is that you can graph your RPE using the stats page and determine if you are consistently hitting the desired RPE’s. If you are started to hit high RPE’s when you shouldn’t be. That will tell you that you are overreached and it may be time to back off.
+
+
+            </div>
+            
+            
+            
+            <div id="maindiary-onerm" class="row">
+                <h3>One rep max & percentages explained</h3>
+                
+                
+                
+A one rep max is exactly what you think it is. It is the heaviest weight you can do a single repetition with. 
+<br/><br/>
+Why is this important to know? Of course, if your primary concern is something like powerlifting then the one rep max is the only thing that matters. However, even for the general trainee, it’s important to use this measurement as a tool in your training. 
+<br/><br/>
+If you know your one rep max, there are statistical models that can guide your weights and set/rep schemes you should be using. The table below shows some examples of popular models that have been used successfully in the past. 
+
+<img src="images/help/pic9.jpg" alt="Reps based on percentages"/>
+
+So say you want to do sets of 8 reps? Well according to this table that will be somewhere between 75-80% of your one rep max. Simple, easy and eliminates the guess work you need to make when you go to the gym. Combine this with Prilepin's Chart, and you have a rough guideline to writing your own programming. 
+ 
+<img src="images/help/pic10.jpg" alt="Prilepin's Chart"/> 
+
+
+Of course, there will be people who do not fit these statistical models, but it is a good place to start. Remember the key to programming is doing more volume (weight x reps x sets) over time. These measures and merely tools to help you achieve this.
+<br/><br/>
+If you want to utilise percentages in MyLiftingPal, you can add a new exercise or set with the percentage field filled in and weight field left blank. The system will then automatically figure out the weight based on your one rep max (make sure you have given your one rep max in your profile).
+
+            </div>
+            <div id="maindiary-tricks" class="row">
+                <h3>Tips and tricks</h3>
+
+MyLiftingPal has many useful features you may not have seen at a first glance. 
+<br/><br/>
+Let’s start with the exercise log
+
+<img src="images/help/pic11.jpg" alt="Exercise log"/> 
+                
+The exercise log is a tool used to quickly identify person records related to that set. You can look at easily see: 
+
+<ul style="padding: 20px;">
+<li>Best amount of reps with a given weight</li>
+<li>Best weight with that exercise</li>
+<li>Best volume (weight x reps x sets) with that amount of reps</li>
+<li>What you did last time</li>
+</ul>
+
+This is useful to see during training to motivate you to hit all time PR’s, no matter what your goals for that session might be.<br/><br/>
+The exercise log is also a place to write more detailed notes about the sets that the RPE scale cannot describe. Did you throw up mid set? Well that might be something worth noting, if not just for a laugh when you look back in the future.
+<br/><br/>
+Within each sets settings, you also have the ability to share your set on Facebook or Google+. Want to tell your friends you just did a 100kg bench? You can easily share this within MyLiftingPal.
+
+<img src="images/help/pic12.jpg" alt="Share set"/> 
+
+Your diary page also offers tools to assist you during lifting. There is a stopwatch timer and a one rep max calculator in case you need this quickly during your training. We want MyLiftingPal to be all you need for your training. No more going off to different apps and websites. To access these simply click the clock or calculator.
+                
+<img src="images/help/pic13.jpg" alt="Calculator and stopwatch"/>                 
+                
+            </div>
+    
+            <h2  id="mainexercises" class="page-header" style="margin-left: -15px;margin-top:50px;font-size:36px;margin-bottom:0px;">My Exercises</h2>
+            <div id="mainexercises-addingnew" class="row">
+                <h3>Adding new exercises</h3>
+                
+                
+To add a new exercise, navigate to your exercise page
+
+
+<img src="images/help/pic14.jpg" alt="Create exercise"/>
+
+From here enter in an exercise name, select the muscle group’s involved (you can select more than one) and select the exercise types related to this movement (you can select more than one)
+
+
+            </div>
+            <div id="mainexercises-muscle" class="row">
+                <h3>Determining muscle groups and exercise types</h3>
+Ok, so you don’t know which muscle group or exercise type the exercise you want to add is?<br/>
+Well go off and read a kinesiology book. Do I look like a lecturer to you? <br/><br/>
+Just kidding, we’ve made a short questionnaire to help you determine which muscle groups and exercise types are involved in a given movement. I do recommend you to learn for yourself and understand the movements of the human body, but you need to track and I don’t want to hold you back. 
+<br/><br/>
+<a href="javascript:void(0);" onclick="$('#muscleModal').modal();" class="btn btn-primary">Open questionnaire</a>
+
+            </div>
+
+            
+            
+            <h2  id="mainworkouts" class="page-header" style="margin-left: -15px;margin-top:50px;font-size:36px;margin-bottom:0px;">My Workouts</h2>
+            <div id="mainworkouts-addingnew" class="row">
+                <h3>Adding new workouts</h3>
+To add a new workout, navigate to your workout page
+
+<img src="images/help/pic15.jpg" alt="Create workout"/>
+
+Enter a workout name and click the big circular plus button to add exercises. Clicking this button will bring up a modal similar to the one on your diary page. 
+
+<img src="images/help/pic16.jpg" alt="Add exercise"/>
+
+From here, just find and select the exercises you want to add to the workout, click create and it’s done.
+
+<img src="images/help/pic17.jpg" alt="Create"/>
+
+
+            </div>
+
+         
+            
+            
+            <h2  id="mainprograms" class="page-header" style="margin-left: -15px;margin-top:50px;font-size:36px;margin-bottom:0px;">My Programs</h2>
+            <div id="mainprograms-addingnew" class="row">
+                <h3>Adding new programs</h3>
+To add a new program, navigate to your program page
+
+<img src="images/help/pic18.jpg" alt="Create program"/>
+
+
+Enter a program name and choose the duration of the program. As you increase the number of days, you will get empty slots where you can choose to put in a workout
+
+<img src="images/help/pic19.jpg" alt="Change duration"/>
+
+Click one of these buttons and you will get a modal similar to your diary page with the ability to select a single workout to add to that day. 
+
+<img src="images/help/pic20.jpg" alt="Add workout"/>
+
+Once you have finished adding workouts to the program, click create
+
+<img src="images/help/pic21.jpg" alt="Create"/>
+            </div>
+
+
+            
+            
+            <h2  id="mainstats" class="page-header" style="margin-left: -15px;margin-top:50px;font-size:36px;margin-bottom:0px;">My Stats</h2>
+            <div id="mainstats-use" class="row">
+                <h3>How to use</h3>
+To use the stats page there are 4 settings you need to know about.<br/><br/>
+Firstly is the metric you want to graph. This can be found at the top left corner of the page.
+<img src="images/help/pic22.jpg" alt="Metric"/>
+
+Here you will see four metrics which you can graph by. There are:
+<ul style="padding: 20px;">
+<li>Volume (weight x reps x sets)</li>
+<li>Weight </li>
+<li>Intensity (the percentage of your one rep max)</li>
+<li>RPE</li>
+</ul>
+
+The next option you need to choose in the time period you want to see the data over. This can be 1 year, 6 months, 1 month or 1 week. Simply click the buttons to change this.
+
+<img src="images/help/pic23.jpg" alt="Duration"/>
+
+You will now need to choose what exercise or exercise type you actually want to see this information for. You can either search to find a specific exercise to view or choose an exercise type to view from the dropdown.
+
+<img src="images/help/pic24.jpg" alt="Type or exercise"/>
+
+Lastly, you have the option to choose your accumulation method. This sounds fancy but all it is is the granularity of data. So for example, daily accumulation means that all the volume or weights or whatever metric you chose will be summed for each day. You can chose to not have an accumulation or even accumulate for an entire month. You choose how much detail you want to see in the graph.
+
+<img src="images/help/pic25.jpg" alt="Accumulation"/>
+
+When you change exercise or accumulation method, remember to click the update button at the bottom right of the page.
+
+<img src="images/help/pic26.jpg" alt="Update"/>
+
+            </div>
+            <div id="mainstats-interpret" class="row">
+                <h3>How to interpret</h3>
+How you interpret the graph depends entirely on the metric you are viewing and your training protocol you are following.<br/><br/>
+If you choose volume, long term you will want to see an upward trend. Short term, you may want to see something different. Say if you are peaking or have blocks where you are focusing on different aspects of training. You’ll potentially want to see volume decreasing during the training cycle, however if you graphed the intensity, this would increase over time. That is a typical style of programming called linear periodization. So this would depend on your training protocol.
+<img src="images/help/pic27.jpg" alt="Linear periodization"/>
+
+Choosing weight would also be similar to what you will see with volume. Long term you will want to see an upward trend. Short term, you might see cycles of less weight increasing to larger weights. 
+
+<img src="images/help/pic28.jpg" alt="Linear progression"/>
+
+The last metric is RPE. RPE can be an interesting metric to graph and can really give you insight how accurate your training is. By graphing RPE you can see exactly when overreaching is occurring because the RPE’s will be consistently higher than expected. Of course, proper programming will factor in higher RPE days and will have a balance to avoid this prematurely. However, a more basic program such as Starting Strength, which doesn’t give you this guide line, would benefit from utilising this statistic. This would prevent unnecessary stalling and wasting time when it’s clear what is happening. Deload before it becomes an issue and you miss reps or sets.
+
+<br/><br/>
+Utilising your stats page is key to effective training. You can always take your workouts one day at a time, but the benefits to seeing you training from a statistical standpoint are countless. Make sure you stay at least one step ahead of the game and make your training as optimal as possible.
+            </div>
+
+
+            
+            
+            <h2  id="mainprofile" class="page-header" style="margin-left: -15px;margin-top:50px;font-size:36px;margin-bottom:0px;">Profile and Settings</h2>
+            <div id="mainprofile-profile" class="row">
+                <h3>How to change your profile</h3>
+To make changes to your user profile or settings, click the dropdown link with your username
+<img src="images/help/pic29.jpg" alt="User dropdown"/>
+From here you can click on profile or settings to make changes.<br/>
+In your profile you have the ability to do a few things. <br/>
+Firstly, you can connect your Facebook or Google+ page to your account. To do this, simply click on connect and follow the steps in the popup box. 
+<img src="images/help/pic30.jpg" alt="Connect FB or G+"/>
+You can also change your profile picture by clicking the “Change Picture” link. This will bring up a modal with the ability to enter your own image (120x120).
+<img src="images/help/pic31.jpg" alt="Change image"/>
+The final options you have is to edit or delete your account. Simply click these buttons to perform these actions.
+<img src="images/help/pic32.jpg" alt="Edit profile"/>
+
+            </div>
+            <div id="mainprofile-settings" class="row">
+                <h3>How to change account settings</h3>
+                You can also change your settings which gives you various options such as, changing your password and  changing the units MyLiftingPal uses.
+<img src="images/help/pic33.jpg" alt="Settings"/>                
+                
+            </div>
+           
+            
+        </div>
+        <div id="helpnav-anchor"></div>
+        <div id="helpnav" class="col-xs-3" style="position: absolute;right:100px;min-width:300px;background-color:white;border-radius:5px;margin-top:20px;">
+            
+
+            <div class="col-xs-7" style="float: none;margin-bottom: 25px;font-size: 16px; text-align:center; line-height: 40px; background-color: #77b2c9; border-top-left-radius: 5px; border-top-right-radius: 5px; color: #fff;">
+                Menu
+            </div>
+                <div style="padding: 30px;min-width: 300px;margin-top: -25px;padding-top: 20px;padding-bottom: 33px;box-shadow: 5px 5px 15px #ccc;border: 1px solid #ddd;border-radius: 7px;border-top-left-radius: 0px;display: table;">
+            <a href="javascript:void(0);"  onclick="$('.helpnav').hide();$('.navdiary').show();scrollTo('#maindiary');" style="display:block;font-size: 16px;">My Diary</a>
+            <ul class="navdiary helpnav" style="margin-left:20px;display:none;">
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#maindiary-addingto');" style="color:#ccc;">Adding to your diary</a></li>
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#maindiary-rpe');" style="color:#ccc;">RPE explained</a></li>
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#maindiary-onerm');" style="color:#ccc;">One rep max & percentages explained</a></li>
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#maindiary-tricks');" style="color:#ccc;">Tips and tricks</a></li>
+            </ul>
+            <a href="javascript:void(0);" onclick="$('.helpnav').hide();$('.navexercises').show();scrollTo('#mainexercises');"  style="display:block;font-size: 16px;">My Exercises</a>
+            <ul  class="navexercises helpnav" style="margin-left:20px;display:none;">
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainexercises-addingnew');" style="color:#ccc;">Adding new exercises</a></li>
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainexercises-muscle');" style="color:#ccc;">Determining muscle groups and exercise types</a></li>
+            </ul>      
+            <a href="javascript:void(0);" onclick="$('.helpnav').hide();$('.navworkouts').show();scrollTo('#mainworkouts');"  style="display:block;font-size: 16px;">My Workouts</a>
+            <ul class="navworkouts helpnav"  style="margin-left:20px;display:none;">
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainworkouts-addingnew');" style="color:#ccc;">Adding new workouts</a></li>
+            </ul>    
+            <a href="javascript:void(0);" onclick="$('.helpnav').hide();$('.navprograms').show();scrollTo('#mainprograms');"  style="display:block;font-size: 16px;">My Programs</a>
+            <ul  class="navprograms helpnav" style="margin-left:20px;display:none;">
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainprograms-addingnew');" style="color:#ccc;">Adding new programs</a></li>
+            </ul>     
+            <a href="javascript:void(0);" onclick="$('.helpnav').hide();$('.navstats').show();scrollTo('#mainstats');"  style="display:block;font-size: 16px;">My Stats</a>
+            <ul class="navstats helpnav"  style="margin-left:20px;display:none;">
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainstats-use');" style="color:#ccc;">How to use</a></li>
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainstats-interpret');" style="color:#ccc;">How to interpret</a></li>
+            </ul>    
+            <a href="javascript:void(0);" onclick="$('.helpnav').hide();$('.navproset').show();scrollTo('#mainprofile');"  style="display:block;font-size: 16px;">Profile and Settings</a>
+            <ul class="navproset helpnav"  style="margin-left:20px;display:none;">
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainprofile-profile');" style="color:#ccc;">How to change your profile</a></li>
+                <li><a href="javascript:void(0);"  onclick="scrollTo('#mainprofile-settings');" style="color:#ccc;">How to change account settings</a></li>
+            </ul>              
+                </div>
+
+            
+            
+        </div>
+    </div>

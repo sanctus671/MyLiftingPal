@@ -22,6 +22,7 @@
     this.$element = $(element);
     this.$note    = $('<div class="alert"></div>');
     this.options  = $.extend(true, {}, $.fn.notify.defaults, options);
+    console.log(options);
 
     // Setup from options
     if(this.options.transition) {
@@ -32,8 +33,10 @@
     } else
       this.$note.addClass('fade').addClass('in');
 
-    if(this.options.type)
+    if(this.options.type){
+        console.log(this.options.type)
       this.$note.addClass('alert-' + this.options.type);
+  }
     else
       this.$note.addClass('alert-success');
 
@@ -67,6 +70,7 @@
 
   Notification.prototype.show = function () {
     if(this.options.fadeOut.enabled)
+
       this.$note.delay(this.options.fadeOut.delay || 3000).fadeOut('slow', $.proxy(onClose, this));
 
     this.$element.append(this.$note);

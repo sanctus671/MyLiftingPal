@@ -8,18 +8,33 @@
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 	<meta name="description" content="MyLiftingPal is an app that lets you easily track your lifting." />
 	<meta name="keywords"  content="myliftingpal, lifting, weight, pal" />
-	
+        
+        
+        <meta property="og:image" content="http://www.myliftingpal.net/alpha/images/db.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="84">
+        <meta property="og:image:height" content="79">	
+        
+        
 	<title>MyLiftingPal - Login</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/login.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="js/jquery.cookie.js"></script>
-    <script src="js/mlp.js"></script>
+
+        
+
 
 </head>
 
-<body>
+<body style="">
+    
+    
+    
+    
+    
+    
+    
+    
 <div class="container">
     
 
@@ -43,27 +58,43 @@
 		
 		<div class="main-login-content">
 		<h3 class="omb_authTitle login-form">Login or <a href="javascript:void(0);" class="change-to-register"> Sign up <i class="fa fa-users"></i></a></h3>
-		<h3 class="omb_authTitle register-form"><a href="javascript:void(0);" class="change-to-login">Login</a> or Sign up <i class="fa fa-users"></i></h3>
-		<div class="row omb_row-sm-offset-3 omb_socialButtons">
-    	    <div class="col-xs-4 col-sm-4">
-		        <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+		<h3 class="omb_authTitle register-form" style="display:none;"><a href="javascript:void(0);" class="change-to-login">Login</a> or Sign up <i class="fa fa-users"></i></h3>
+		<div class="row omb_row-sm-offset-3 omb_socialButtons login-form">
+
+    	    <div class="col-xs-6">
+                
+
+                
+                
+		        <a href="#" onclick="fb_login();" class="btn btn-lg btn-block omb_btn-facebook">
 			        <i class="fa fa-facebook"></i>
 		        </a>
+                            
 	        </div>
-        	<div class="col-xs-4 col-sm-4">
+        	<!--<div class="col-xs-4 col-sm-4">
 		        <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
 			        <i class="fa fa-twitter"></i>
 		        </a>
-	        </div>	
-        	<div class="col-xs-4 col-sm-4">
-		        <a href="#" class="btn btn-lg btn-block omb_btn-google">
+	        </div>	-->
+                    
+                    
+        	<div class="col-xs-6">
+                        <span id="signinButton" style="display:none;">
+                            <span class="g-signin"
+                                data-callback="signinCallback"
+                                data-clientid="178923840211-65u32ia6ur0m3mtj62kqvprovfvqlee6.apps.googleusercontent.com"
+                                data-cookiepolicy="single_host_origin"
+                                data-scope="https://www.googleapis.com/auth/userinfo.email">
+                            </span>
+                        </span>                    
+		        <a href="#"  onclick="$('#signinButton button').click();" id="gp_btn" class="btn btn-lg btn-block omb_btn-google">
 			        <i class="fa fa-google-plus"></i>
 
 		        </a>
 	        </div>	
 		</div>
 
-		<div class="row omb_row-sm-offset-3 omb_loginOr">
+		<div class="row omb_row-sm-offset-3 omb_loginOr login-form">
 			<div class="col-xs-12 col-sm-6">
 				<hr class="omb_hrOr">
 				<span class="omb_spanOr">or</span>
@@ -141,88 +172,177 @@
 
 
         </div>
-<script>
-var mlpObject = mlp('d22c3cf2949cd85a21ddcf725f71dcef');
+    
+<div class="modal fade" id="mobileModal" tabindex="-1" role="dialog" aria-labelledby="mobileModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Mobile Device Detected!</h4>
+            </div>
+            <div class="modal-body">
+                We have detected you are using a mobile device! <br/>
+                MyLiftingPal.net is not optimised for mobile use. Use the app instead!
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary accept-mobile" data-dismiss="modal">Get App</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+                
+        </div>
+    </div>
+  </div>
+</div>    
 
+    
+<div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="forgotModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Reset Password</h4>
+            </div>
+            <div class="modal-body">
+                
+                <form>
+                    <div class="form-group">
+                        <label>Enter your details below to have your password reset</label>
+                        <input type="text" class="form-control" placeholder="Email address or Username">
+                    </div>
+  
+                </form>                
+                
+                
+            </div>
+            <div class="modal-footer">
+                
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary reset-password" data-dismiss="modal">Reset</button>
+                
+        </div>
+    </div>
+  </div>
+</div>     
+    
+  <div class="modal fade" id="tosModal" tabindex="-1" role="dialog" aria-labelledby="tosModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Terms and Conditions</h4>
+            </div>
+            <div class="modal-body">
+    <div class="row" style="padding: 0 50px;">
 
+<h3>
+	1. Terms
+</h3>
 
-$(".register-form").hide();
-$(".main-logout-content").hide();
+<p>
+	By accessing this web site, you are agreeing to be bound by these 
+	web site Terms and Conditions of Use, all applicable laws and regulations, 
+	and agree that you are responsible for compliance with any applicable local 
+	laws. If you do not agree with any of these terms, you are prohibited from 
+	using or accessing this site. The materials contained in this web site are 
+	protected by applicable copyright and trade mark law.
+</p>
 
-if (mlpObject.session !== ""){
-		$(".main-login-content").hide();
-		$(".main-logout-content").show();
-}
+<h3>
+	2. Use License
+</h3>
 
-
-$(".change-to-login").click(function(){
-	$(".register-form").hide();
-	$(".login-form").fadeIn("slow");
-});
-$(".change-to-register").click(function(){
-	$(".login-form").hide();
-	$(".register-form").fadeIn("slow");
-});
-
-
-$(".logout-button").click(function(){
-	mlpObject.logout();
-	$(".main-logout-content").hide();
-	$(".main-login-content").fadeIn("slow");
-	
-});
-
-$(".register-form").on("submit",function(e){
-	e.preventDefault();
-	var form = $(this);
-    var username = $('.username', form).val();
-	var email = $('.email', form).val();
-	var password = $('.password', form).val();	
-	var password2 = $('.password2', form).val();
-	if (password != password2){
-		$('.info', form).html("Password didn't match");
-		return;
-	}
-	
-	mlpObject.createUser(email, username, password);
-	if (mlpObject.result["success"] == true){
-		$('.info', form).html("");
-		$(".register-form").hide();
-		$(".login-form").fadeIn("slow");		
-	}
-	else{
-		$('.info', form).html(mlpObject.result["errormsg"]);
-	}
-
-});
-
-
-$(".login-form").on("submit",function(e){
-	e.preventDefault();
-	var form = $(this);
-    var username = $('.username', form).val();
-	var password = $('.password', form).val();	
-	mlpObject.login(username, password);
-	console.log(mlpObject.result["success"]);
-	if (mlpObject.result["success"] === true){
-		document.location.href="index.html";
-		$('.info', form).html("");
-		//$(".main-login-content").hide();
-		//$(".main-logout-content").fadeIn("slow");		
+<ol type="a" >
+	<li style="list-style: inherit;">
+		Permission is granted to temporarily download one copy of the materials 
+		(information or software) on MyLiftingPal's web site for personal, 
+		non-commercial transitory viewing only. This is the grant of a license, 
+		not a transfer of title, and under this license you may not:
 		
-	}
-	else{
-		$('.info', form).html(mlpObject.result["errormsg"]);
-	}
-});
+		<ol type="i">
+			<li style="list-style: inherit;">modify or copy the materials;</li>
+			<li style="list-style: inherit;">use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
+			<li style="list-style: inherit;">attempt to decompile or reverse engineer any software contained on MyLiftingPal's web site;</li>
+			<li style="list-style: inherit;">remove any copyright or other proprietary notations from the materials; or</li>
+			<li style="list-style: inherit;">transfer the materials to another person or "mirror" the materials on any other server.</li>
+		</ol>
+	</li>
+	<li style="list-style: inherit;">
+		This license shall automatically terminate if you violate any of these restrictions and may be terminated by MyLiftingPal at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
+	</li>
+</ol>
 
-$(".forgot-pass").click(function(){
-	console.log("too bad");
+<h3>
+	3. Disclaimer
+</h3>
 
-});
+<ol type="a">
+	<li style="list-style: inherit;">
+		The materials on MyLiftingPal's web site are provided "as is". MyLiftingPal makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, MyLiftingPal does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.
+	</li>
+</ol>
 
+<h3>
+	4. Limitations
+</h3>
 
-</script>		
+<p>
+	In no event shall MyLiftingPal or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on MyLiftingPal's Internet site, even if MyLiftingPal or a MyLiftingPal authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+</p>
+			
+<h3>
+	5. Revisions and Errata
+</h3>
+
+<p>
+	The materials appearing on MyLiftingPal's web site could include technical, typographical, or photographic errors. MyLiftingPal does not warrant that any of the materials on its web site are accurate, complete, or current. MyLiftingPal may make changes to the materials contained on its web site at any time without notice. MyLiftingPal does not, however, make any commitment to update the materials.
+</p>
+
+<h3>
+	6. Links
+</h3>
+
+<p>
+	MyLiftingPal has not reviewed all of the sites linked to its Internet web site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by MyLiftingPal of the site. Use of any such linked web site is at the user's own risk.
+</p>
+
+<h3>
+	7. Site Terms of Use Modifications
+</h3>
+
+<p>
+	MyLiftingPal may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
+</p>
+
+<h3>
+	8. Governing Law
+</h3>
+
+<p>
+	Any claim relating to MyLiftingPal's web site shall be governed by the laws of the country New Zealand without regard to its conflict of law provisions.
+</p>
+
+<p>
+	General Terms and Conditions applicable to Use of a Web Site.
+</p>  
+    </div></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+                
+        </div>
+    </div>
+  </div>
+</div> 
+    
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.cookie.min.js"></script>   
+        <script src="js/mlp.min.js"></script>   
+        <script src="js/auth.js"></script>        
+        <script src="js/login.min.js"></script>	
+        
+        
+        <script src="https://apis.google.com/js/client:platform.js?onload=render" async defer></script>
 		</body>
 		
 		</html>

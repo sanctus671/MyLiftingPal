@@ -2,6 +2,103 @@
 Typography
 ======================================
 */
+a[disabled] {
+    cursor:not-allowed;
+
+}
+a[disabled]:hover{
+    background:white !important;
+}
+a[disabled]:focus{
+    background:white !important;
+}
+
+.icon-button {
+	background-color: transparent;
+	border-radius: 3.6rem;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 2.0rem;
+	height: 3.6rem;
+	line-height: 3.6rem;
+	margin: 0 5px;
+	position: relative;
+	text-align: center;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	width: 3.6rem;
+        top:7px;
+}
+
+/* Circle */
+.icon-button span {
+	border-radius: 0;
+	display: block;
+	height: 0;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 0;
+}
+.icon-button:hover span {
+	width: 3.6rem;
+	height: 3.6rem;
+	border-radius: 3.6rem;
+	margin: -1.8rem;
+}
+.twitter span {
+	background-color: #4099ff;
+}
+.facebook span {
+	background-color: #3B5998;
+}
+.google-plus span {
+	background-color: #db5a3c;
+}
+
+
+
+/* Icons */
+.icon-button i {
+	background: none;
+	color: white;
+	height: 3.6rem;
+	left: 0;
+	line-height: 3.6rem;
+	position: absolute;
+	top: 0;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 3.6rem;
+	z-index: 10;
+}
+.icon-button .icon-twitter {
+	color: #4099ff;
+}
+.icon-button .icon-facebook {
+	color: #3B5998;
+}
+.icon-button .icon-google-plus {
+	color: #db5a3c;
+}
+
+
+.icon-button:hover .icon-twitter,
+.icon-button:hover .icon-facebook,
+.icon-button:hover .icon-google-plus {
+	color: white;
+}
+
+
 .header-image{ 
   background: url(../images/header.jpg) no-repeat center center; 
   -webkit-background-size: cover;
@@ -18,6 +115,17 @@ Typography
         padding-right: 0;
     }
 }
+
+
+.app-icons {
+        display:none;
+    }
+    .app-icons-arrow-open {
+        display:block;
+    }    
+
+
+
 
 h1 {
   text-align: center;
@@ -51,12 +159,26 @@ a:hover, a:focus {
 	text-decoration:none;
 	}
 .btn-default {
+    transition: all 0.5s ease;
 color: #77b2c9;
 }
 
 .btn-default:hover {
     color: #25b8cc;
 }
+.btn-primary{
+    transition: all 0.5s ease;
+   background-color: #77b2c9;;
+   border-color: #77b2c9;
+    
+}
+
+.btn-primary:hover{
+   background-color: #25b8cc;
+   border-color: #25b8cc;
+    
+}
+
 
 img {
   display: block;
@@ -82,11 +204,11 @@ color: #777;}
 color: #777;}
 
 .dropdown-menu{
-	background-color:rgba(110, 175, 255,0.85);
+	background-color:#77b2c9;
 }
 
 .dropdown-menu .divider{
-background-color: rgba(180, 200, 230, 0.8);
+background-color: rgba(180, 200, 230, 0.4);
 height: 2px;
 }
 
@@ -115,6 +237,12 @@ html, body {
   height: 100%;
 }
 
+.canvasjs-chart-credit{
+    display:none;
+}
+.sidebar-menu-item.active{
+    background-color:#286090;
+}
 
 .modal-dialog{
     left:3em;
@@ -122,10 +250,24 @@ html, body {
 }
 
 
-.modal-new-exercise-name{
-    display: inline;
+.modal-new-exercise-name, .modal-new-workout-name, modal-new-program-name{
+    display:inline;
+position: absolute;
+
+margin-top: 5px;
+margin-left: 4px;  
     
 }
+.modal-new-exercise-name{
+    width: 140px;
+}
+.modal-new-workout-name{
+    width: 250px;
+}
+.modal-new-program-name{
+    width: 250px;
+}
+
 
 .modal-new-checkbox{
     
@@ -179,10 +321,11 @@ margin-top:100px;
 height:25px;
 padding-bottom:0px;
 text-align:center;
+bottom: 0px;
 }
 
 .view-added{
-width: 99%;
+width: 90%;
 margin: auto;
 
 }
@@ -194,21 +337,27 @@ margin: auto;
 
 
 .view-log{
-width: 99%;
+width: 90%;
 margin: auto;
+margin-left:10%;
 padding-bottom:20px;
 
 
 }
 
 .view-exercise-settings{
-width: 99%;
+width: 90%;
 margin: auto;
+margin-left:10%;
 
 
 }
 
-
+.topset{
+    position:absolute;
+    width:100%;
+    
+}
 .btn-circle-main {
   width: 60px;
   height: 60px;
@@ -270,6 +419,8 @@ vertical-align: bottom;
 .exercise{
 	font-weight:bold;
 	width:20%;
+        padding: 0px;
+        padding-left: 15px;
 	line-height: 40px;
         font-size: 16px;
 }
@@ -383,4 +534,50 @@ Helper Classes
   width: 1px;
 }
 
+.animated { 
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+} 
 
+@-webkit-keyframes wobble { 
+  0% { -webkit-transform: translateX(0%); } 
+  15% { -webkit-transform: translateX(-25%) rotate(-5deg); } 
+  30% { -webkit-transform: translateX(20%) rotate(3deg); } 
+  45% { -webkit-transform: translateX(-15%) rotate(-3deg); } 
+  60% { -webkit-transform: translateX(10%) rotate(2deg); } 
+  75% { -webkit-transform: translateX(-5%) rotate(-1deg); } 
+  100% { -webkit-transform: translateX(0%); } 
+} 
+@keyframes wobble { 
+  0% { transform: translateX(0%); } 
+  15% { transform: translateX(-25%) rotate(-5deg); } 
+  30% { transform: translateX(20%) rotate(3deg); } 
+  45% { transform: translateX(-15%) rotate(-3deg); } 
+  60% { transform: translateX(10%) rotate(2deg); } 
+  75% { transform: translateX(-5%) rotate(-1deg); } 
+  100% { transform: translateX(0%); } 
+} 
+.wobble { 
+    -webkit-animation-name: wobble; 
+    animation-name: wobble; 
+}
+
+.tooltip-inner {
+    min-width:100px;
+
+    max-width: 500px !important;
+}
+
+.exercise .tooltip{
+    left:0px !important;
+}
+
+.details.set .tooltip,.details.rpe .tooltip,.details.percentage .tooltip{
+    width:300px;
+}
+
+a.fa-arrow-circle-left:hover{
+    color:#25b8cc;
+}

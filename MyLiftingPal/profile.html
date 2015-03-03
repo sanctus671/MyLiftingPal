@@ -1,0 +1,305 @@
+<script src="https://apis.google.com/js/client:platform.js?onload=render" async defer></script>
+<script src="js/auth2.js"></script>
+
+
+
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Add One Rep Max</h4>
+            </div>
+            <div class="modal-body" style="padding-bottom: 0px;">
+
+                <div class="row modal-exercises" style="">
+                    <div class="col-md-6 recent-exercises" style="padding-left: 40px; padding-right: 40px;">
+                        
+                    <div class="current-page" style="display:none;"></div>
+                    
+                    <div class="row">&nbsp;</div> 
+                    <h4 style="margin-left: -15px;">Recent Exercises</h4> <hr/>
+                    
+                    
+                    <div class="modal-new-recent-items">
+   
+                    </div>
+                     
+                    <nav class="modal-new-nav">
+                        <ul class="pagination recent">
+
+                        </ul>
+                    </nav>
+                    
+                    
+                    </div>
+                    <div class="col-md-6 search-exercises" style="border-left: 1px solid #e5e5e5; padding-left: 40px; padding-right: 40px;">
+                    
+                    <div class="current-page" style="display:none;"></div>
+                        
+                    <div class="row">&nbsp;</div>         
+                    <div class="row input-group" style="display: table;">
+                        <input type="text" class="form-control search-form" placeholder="Search exercise database">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search-btn" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                    <div class="row" style="margin-top:17px; ">Searching for: <span class="modal-new-search-term" style="font-weight:bold;">None</span></div>
+                    <hr/>
+                    <div class="modal-search-results">
+                       
+
+                        
+                    </div>
+                    <nav class="modal-new-nav">
+                        <ul class="pagination search" >
+
+                        </ul>
+                    </nav>
+                    </div>                    
+                    
+                </div>
+                
+
+            
+   
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary accept-add" data-dismiss="modal">Add</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="profile-deleteModal" tabindex="-1" role="dialog" aria-labelledby="profile-deleteModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Delete Account</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to be one of those people who don't even lift?<br/>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary accept-delete" data-dismiss="modal">Yes</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="profile-editModal" tabindex="-1" role="dialog" aria-labelledby="profile-editModal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" style="padding: 0 50px;margin-right: 30px;">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Gender</label>
+                            <div class="col-sm-9">
+                            <select class="form-control edit-profile-gender" id="edit-profile-gender">
+                                <option>Alien</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Age</label>
+                            <div class="col-sm-9">
+                            <input type="number" class="form-control edit-profile-age" placeholder="Age">
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Weight</label>
+                            <div class="col-sm-9">
+                            <input type="number" class="form-control edit-profile-weight" placeholder="Weight">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">About Me</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control edit-profile-about" placeholder="About Me" rows="5"></textarea>
+                        </div>
+                    </div>    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Why I Lift</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control edit-profile-why" placeholder="Why I Lift" rows="5"></textarea>
+                        </div>
+                    </div>  
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">My Goals</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control edit-profile-goals" placeholder="My Goals" rows="5"></textarea>
+                        </div>
+                    </div>                      
+                </form>                
+                
+                
+                
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary accept-edit" data-dismiss="modal">Save</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="profile-imageModal" tabindex="-1" role="dialog" aria-labelledby="profile-imageModal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Edit Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label">Image URL</label>
+                            <br/>(must be 120x120)
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="url" class="form-control edit-profile-url" placeholder="URL">
+                        </div>
+                    </div>
+                    
+                </form>                
+                
+                
+                
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary accept-image-edit" data-dismiss="modal">Save</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="page-header">
+      <h1>My Profile</h1>
+</div>
+
+<div class="container main-contents" style="max-width:50%;min-width: 900px;">
+    <div class="row" style="box-shadow: 5px 5px 15px #ccc;background: linear-gradient( rgba(255, 255, 255, 0.7), rgba(255, 255,255, 0.7) ), url(images/header.jpg) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;padding: 20px;border-radius: 7px;border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;">
+
+        <div class="col-sm-6">
+            <div class="profle-picture" style="border-radius:20px;  float:right;  overflow:hidden;">
+                <img src="images/icongp.png" style="vertical-align:bottom;padding:0px;display: inline-block;" class="profile-dp"><br/>
+
+            </div>
+            <div class="profile-changepic" style="margin-top: 125px;">
+            <a href="javascript:void(0);" style="margin-right: 10px;float:right;" class="change-dp">Change Picture</a>
+            </div>
+        </div>
+        
+        <div class="col-sm-6">
+            <div class="profile-section profile-info">
+                <h3 style="margin-bottom: 0px;margin-top: 0px;"><span class="profile-username">Not loaded</span></h3>
+                <div class="profile-email" style="">Not loaded</div>
+                <div class="profile-genderage" style=""><span class="weight">Not loaded</span> <span class="gender">Not loaded</span>, <span class="age">Not loaded</span> years old</div>
+
+                <span id="signinButton" style="display:none;">
+                            <span class="g-signin"
+                                data-callback="signinCallback"
+                                data-clientid="178923840211-65u32ia6ur0m3mtj62kqvprovfvqlee6.apps.googleusercontent.com"
+                                data-cookiepolicy="single_host_origin"
+                                data-scope="https://www.googleapis.com/auth/userinfo.email">
+                            </span>
+                </span> 
+                
+                <a href="javascript:void(0);" onclick="fb_login();" class="btn btn-sm btn-block fb-button" style="background-color:#3b5998;color:white;width:150px;margin-top: 10px;margin-bottom:5px;">
+                    <i class="fa fa-facebook"></i><span class="profile-facebook"> Connect</span>
+		</a>
+                <span id="signinButton" style="display:none;">
+                            <span class="g-signin"
+                                data-callback="signinCallback"
+                                data-clientid="178923840211-65u32ia6ur0m3mtj62kqvprovfvqlee6.apps.googleusercontent.com"
+                                data-cookiepolicy="single_host_origin"
+                                data-scope="https://www.googleapis.com/auth/userinfo.email">
+                            </span>
+                </span>                 
+                
+                <a href="javascript:void(0);" onclick="$('#signinButton button').click();" class="btn btn-sm btn-block gp-button" style="background-color:#c32f10;color:white;width:150px;">
+                    <i class="fa fa-google-plus" ></i><span class="profile-gplus"> Connect</span>
+		</a><br/>
+            </div>
+        </div>
+    </div>
+        <div class="row" style="box-shadow: 5px 5px 15px #ccc;border: 1px solid #ddd;border-radius: 7px;border-top-left-radius: 0px;border-top-right-radius: 0px;">
+        <div class="col-sm-6 profile-section profile-details" style="text-align:center;padding:20px;">
+
+            <h3>About Me:</h3> <div class="profile-about"></div>
+                <h3>Why I Lift:</h3> <div class="profile-why"></div>
+                <h3>My Goals:</h3> <div class="profile-goals"></div>
+                                
+                <h3>Friends:</h3>   
+                
+                <div class="profile-friends" style="width: 50%;margin:0 auto;">
+ 
+                    
+                </div>
+                
+        </div>
+        
+        <div class="col-sm-6 profile-section profile-details" style="text-align:center;padding:20px;">
+
+                <h3>Maxes:</h3> 
+                <div class="profile-maxes">
+                   
+                    
+                </div><br/>
+                <a href="javascript:void(0);" class="btn btn-default btn-circle-main" title="Add or update a one rep max">
+                    <i class="fa fa-plus fa-2x" style="line-height: 1.9 !important;"></i>
+                </a>                        
+                
+        </div>         
+
+
+
+        
+        </div>
+        <div class="row">
+            <div class="col-sm-12 account-options" style="text-align:center;margin-top:50px;">
+                <a href="javascript:void(0);" class="btn btn-primary edit-profile"><i class="fa fa-pencil-square-o"></i> Edit Profile</a> 
+                <a href="javascript:void(0);" class="btn btn-danger delete-account"><i class="fa fa-times"></i> Delete Account</a>
+            </div>
+        </div>
+      
+        
+        
+        
+        
+        
+        
+        
+        </div>
+        
+        

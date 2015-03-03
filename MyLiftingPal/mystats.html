@@ -1,0 +1,153 @@
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Find Exercise</h4>
+            </div>
+            <div class="modal-body" style="padding-bottom: 0px;">
+
+                <div class="row modal-exercises" style="">
+
+                    <div class="col-md-12 search-exercises" style="border-left: 1px solid #e5e5e5; padding-left: 40px; padding-right: 40px;">
+                    
+                    <div class="current-page" style="display:none;"></div>
+                        
+                    <div class="row">&nbsp;</div>         
+                    <div class="row input-group" style="display: table;">
+                        <input type="text" class="form-control mystats-modal search-form" placeholder="Search exercise database">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default mystats-modal search-btn" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                    <div class="row" style="margin-top:17px; ">Searching for: <span class="modal-new-search-term" style="font-weight:bold;">None</span></div>
+                    <hr/>
+                    <form class="modal-search-results" style="padding-bottom: 20px;text-align:left;">
+                       
+
+                        
+                    </form>
+
+                    </div>                    
+                    
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary mystats-select-btn" data-dismiss="modal">Select</button>
+        </div>            
+        </div>
+    </div>
+</div>
+
+<div class="page-header">
+      <h1>My Stats</h1>
+</div>
+
+<div class="container main-contents" style="max-width:80%;text-align:center;">
+
+    
+
+    
+    
+    
+<div class="mystats-graph" style="width: 70%;">    
+    
+<div class="main-controls" style="width: 100%;margin-top:10px;height:10px;">
+  <div class="form-group row" style="top: 35px;z-index: 999;float:left;width:40%;">
+      <div class="col-xs-12" style="">
+    <select class="form-control mystats-metric" style="display:inline-block;">
+        <option value="" disabled>Select Metric</option>
+        <option selected>Volume</option>
+        <option>Weight</option>
+        <option>Intensity</option>
+        <option>RPE</option>
+    </select>
+      </div>
+
+    
+  </div>
+    
+  <div class="form-group row" style="top: 35px;z-index: 999;width:60%;float:right;">
+      <div class="col-xs-12" style="text-align: right;">
+          <button type="button" class="btn btn-default duration-button mystats-year">1 Year</button>
+          <button type="button"  class="btn btn-default duration-button mystats-sixmonth">6 Months</button>
+          <button type="button"  class="btn btn-default duration-button mystats-month">1 Month</button>
+          <button type="button"  class="btn btn-default duration-button mystats-week active">1 Week</button>
+      </div>
+
+    
+  </div>
+</div>
+    
+    
+    <div id="chartContainer" style="height: 400px; width: 100%;margin-top:40px">Not loaded</div>
+    
+    
+    
+</div> 
+    
+    
+    
+      <div class="graph-options" style="width:20%;position:absolute;top:95px;left:66%;padding-left:30px;">
+        <div class="col-xs-7" style="font-size: 16px; text-align:center; line-height: 40px; background-color: #77b2c9; border-top-left-radius: 5px; border-top-right-radius: 5px; color: #fff;">
+            Options
+        </div>
+          <div style="padding: 30px;margin-top:40px;padding-top: 0px;padding-bottom: 33px;box-shadow: 5px 5px 15px #ccc;border: 1px solid #ddd;border-radius: 7px;border-top-left-radius: 0px;display: table;">
+     <div class="col-xs-12" style="padding:20px 12px;padding-top: 40px;text-align:left;">
+         <strong>Currently viewing <a style="color:#ccc;" href="javascript:void(0);" data-toggle="tooltip" data-placement="top"  data-original-title="Need help deciphering this page? Head over to the help page and we'll run you through it." class="fa fa-question-circle"></a>:</strong>
+        <div class="mystats-currentview">Not Loaded</div>
+            
+    </div> 
+          
+          
+     <div class="col-xs-12" style="padding:20px 12px;">
+         <label style="text-align:left;width:100%;">Find an exercise</label>
+            <div class="row input-group" style="display: table;">
+                        <input type="text" class="form-control search-form mystats-search" placeholder="Find Exercise">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search-btn mystats-search" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+    </div> 
+          
+          
+              
+     <div class="col-xs-12" style="padding:20px 0;">
+    <label style="text-align:left;width:100%;">Or choose an exercise type</label> 
+    <select class="form-control mystats-type" style="display:inline-block;">
+        <option value="" disabled>Select Exercise Type</option>
+            <option>Isolation</option>
+            <option>Compound</option>                    
+            <option>Squat</option>
+            <option>Press</option>
+            <option>Deadlift</option>
+            <option>Push</option>
+            <option>Pull</option>
+            <option>Legs</option>
+            <option>Upper</option>
+            <option selected>Lower</option> 
+    </select> 
+    </div>  
+          
+     <div class="col-xs-12" style="padding:20px 0;">
+         <label style="text-align:left;width:100%;">Choose accumulation method</label>
+    <select class="form-control mystats-accumulation" style="display:inline-block;">
+        
+        <option value="" disabled>Select Accumulation</option>
+        <option>Not Accumulated</option>
+        <option selected>Daily</option>
+        <option>Weekly</option>
+        <option>Monthly</option>
+    </select> 
+    </div>    
+
+     <div class="col-xs-12" style="padding:20px 0;">
+    <button style="float:left;" type="submit" class="btn btn-primary mystats-update">Update</button>
+    </div>    
+          </div>
+</div>
+    
+    
+</div>

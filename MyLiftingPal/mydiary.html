@@ -1,3 +1,12 @@
+<script src="https://apis.google.com/js/client:platform.js?onload=render" async defer></script>
+<script src="js/auth2.js"></script>
+
+
+
+
+
+
+
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -13,6 +22,27 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary accept-delete" data-dismiss="modal">Yes</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteExerciseModal" tabindex="-1" role="dialog" aria-labelledby="deleteExerciseModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Delete Exercise</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete all sets for this exercise?<br/>
+                <div class="delete-exercise-result-id" style="display:none;"></div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary accept-delete-exercise" data-dismiss="modal">Yes</button>
         </div>
     </div>
   </div>
@@ -39,365 +69,188 @@
                 </ul>
                 <div class="row modal-exercises" style="">
                     <div class="col-md-6 recent-exercises" style="padding-left: 40px; padding-right: 40px;">
+                        
+                    <div class="current-page" style="display:none;"></div>
+                    
                     <div class="row">&nbsp;</div> 
                     <h4 style="margin-left: -15px;">Recent Exercises</h4> <hr/>
+                    
+                    
                     <div class="modal-new-recent-items">
-                        
-                        
-                        <div class="row modal-new-recent-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Bench Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div>
-                        
-                        
-                        
-                        <div class="row modal-new-recent-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Squat</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
-                        
-                        
-                        
-                        <div class="row modal-new-recent-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Deadlift</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                                                
-                        
-                        
-                        <div class="row modal-new-recent-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Facepulls</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
-                        
-                        <div class="row modal-new-recent-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Overhead Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
-                        
-                        <div class="row modal-new-recent-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Dumbell Rows</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
-                        
-                        <div class="row modal-new-recent-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Pause Squat</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
+   
                     </div>
                      
                     <nav class="modal-new-nav">
                         <ul class="pagination recent">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
+
                         </ul>
                     </nav>
+                    
+                    
                     </div>
                     <div class="col-md-6 search-exercises" style="border-left: 1px solid #e5e5e5; padding-left: 40px; padding-right: 40px;">
+                    
+                    <div class="current-page" style="display:none;"></div>
+                        
                     <div class="row">&nbsp;</div>         
                     <div class="row input-group" style="display: table;">
-                        <input type="text" class="form-control search-form" placeholder="Search">
+                        <input type="text" class="form-control search-form" placeholder="Search exercise database">
                         <span class="input-group-btn">
                             <button class="btn btn-default search-btn" type="button"><i class="fa fa-search"></i></button>
                         </span>
                     </div>
-                    <div class="row" style="margin-top:17px; ">Searching for: <span class="modal-new-search-term" style="font-weight:bold;">Bench Press</span></div>
+                    <div class="row" style="margin-top:17px; ">Searching for: <span class="modal-new-search-term" style="font-weight:bold;">None</span></div>
                     <hr/>
                     <div class="modal-search-results">
                        
 
-                        <div class="row modal-new-search-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Bench Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
                         
-                        
-                        
-                        <div class="row modal-new-search-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Board Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        <div class="row modal-new-search-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Incline Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
-                        <div class="row modal-new-search-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Overhead Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
-                        <div class="row modal-new-search-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Decline Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        <div class="row modal-new-search-item">
-                            <input type="checkbox" value="" class="modal-new-checkbox"> <div class="modal-new-exercise-name">Shoulder Press</div>
-                            <div class="modal-new-inputs modal-new-main">
-                                <a href="javascript:void(0);" class="modal-new-input modal-new-more-link" onclick="javascript:$('.modal-new-more').slideToggle();">More <i class="fa fa-caret-down"></i></a>
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Weight" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="Reps" required></div>  
-                                
-                                    
-                            </div>
-                            <div class="modal-new-inputs modal-new-more">
-                                <div class="modal-new-input">&nbsp;</div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="RPE" required></div>  
-                                <div class="modal-new-input"><input type="number" class="form-control " placeholder="%1RM" required></div>  
-                                
-                                    
-                            </div>
-                            
-                        </div> 
-                        
-                        
-                        
-                        
-                        
-                 
                     </div>
                     <nav class="modal-new-nav">
                         <ul class="pagination search" >
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
+
                         </ul>
                     </nav>
                     </div>                    
                     
                 </div>
                 
-                <div class="modal-workouts" style="display:none;">
+
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <div class="row modal-workouts" style="display:none;">
                     
+                <div class="col-md-6 recent-workouts" style="padding-left: 40px; padding-right: 40px;">
+                        
+                    <div class="current-page-workouts" style="display:none;"></div>
+                    
+                    <div class="row">&nbsp;</div> 
+                    <h4 style="margin-left: -15px;">Recent Workouts</h4> <hr/>
+                    
+                    
+                    <div class="modal-new-recent-items-workouts">
+
+                    </div>
+                     
+                    <nav class="modal-new-nav">
+                        <ul class="pagination recent-workouts">
+
+                        </ul>
+                    </nav>
+                    
+                    
+                    </div>
+                    <div class="col-md-6 search-workouts" style="border-left: 1px solid #e5e5e5; padding-left: 40px; padding-right: 40px;">
+                    
+                    <div class="current-page-workouts" style="display:none;"></div>
+                        
+                    <div class="row">&nbsp;</div>         
+                    <div class="row input-group" style="display: table;">
+                        <input type="text" class="form-control search-form-workouts" placeholder="Search workout database">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search-btn-workouts" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                    <div class="row" style="margin-top:17px; ">Searching for: <span class="modal-new-search-term-workout" style="font-weight:bold;">None</span></div>
+                    <hr/>
+                    <div class="modal-search-results-workouts">
+                       
+
+                        
+                    </div>
+                    <nav class="modal-new-nav">
+                        <ul class="pagination search-workouts" >
+
+                        </ul>
+                    </nav>
+                                        
+                    
+                    
+                 
+                </div>
                 </div>
                 
-                <div class="modal-programs" style="display:none;">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <div class="modal-programs row" style="display:none;">
+                    
+                <div class="col-md-6 recent-programs" style="padding-left: 40px; padding-right: 40px;">
+                        
+                    <div class="current-page-programs" style="display:none;"></div>
+                    
+                    <div class="row">&nbsp;</div> 
+                    <h4 style="margin-left: -15px;">Recent Programs</h4> <hr/>
                     
                     
+                    <div class="modal-new-recent-items-programs">
+
+                    </div>
+                     
+                    <nav class="modal-new-nav">
+                        <ul class="pagination recent-programs">
+
+                        </ul>
+                    </nav>
+                    
+                    
+                    </div>
+                    <div class="col-md-6 search-programs" style="border-left: 1px solid #e5e5e5; padding-left: 40px; padding-right: 40px;">
+                    
+                    <div class="current-page-programs" style="display:none;"></div>
+                        
+                    <div class="row">&nbsp;</div>         
+                    <div class="row input-group" style="display: table;">
+                        <input type="text" class="form-control search-form-programs" placeholder="Search program database">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default search-btn-programs" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                    <div class="row" style="margin-top:17px; ">Searching for: <span class="modal-new-search-term-program" style="font-weight:bold;">None</span></div>
+                    <hr/>
+                    <div class="modal-search-results-programs">
+                       
+
+                        
+                    </div>
+                    <nav class="modal-new-nav">
+                        <ul class="pagination search-programs" >
+
+                        </ul>
+                    </nav>
+                                        
+                    
+                    
+                 
+                </div>
                     
                 </div>
                 
             </div>
             <div class="modal-footer" style="text-align: center;">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary accept-edit" data-dismiss="modal">Add</button>
+                <button type="button" class="btn btn-primary accept-add" data-dismiss="modal">Add</button>
         </div>
     </div>
   </div>
@@ -418,31 +271,31 @@
                     <div class="form-group">
                         <label class="col-sm-5 control-label">Reps</label>
                             <div class="col-sm-5">
-                            <input type="number" class="form-control edit-result-reps" placeholder="Reps">
+                            <input min="0" type="number" class="form-control edit-result-reps" placeholder="Reps" step="0.1">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-5 control-label">Set</label>
                             <div class="col-sm-5">
-                            <input type="number" class="form-control edit-result-set" placeholder="Set">
+                            <input min="1" type="number" class="form-control edit-result-set" placeholder="Set" step="1">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-5 control-label">RPE</label>
                             <div class="col-sm-5">
-                            <input type="number" class="form-control edit-result-rpe" placeholder="RPE">
+                            <input min="0" type="number" class="form-control edit-result-rpe" placeholder="RPE" step="0.1">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-5 control-label">Weight</label>
                             <div class="col-sm-5">
-                            <input type="number" class="form-control edit-result-weight" placeholder="Weight">
+                            <input min="0" type="number" class="form-control edit-result-weight" placeholder="Weight" step="0.01">
                         </div>
                     </div>      
                     <div class="form-group">
                         <label class="col-sm-5 control-label">%1RM</label>
                             <div class="col-sm-5">
-                            <input type="number" class="form-control edit-result-percentage" placeholder="Percentage">
+                            <input min="0" type="number" class="form-control edit-result-percentage" placeholder="Percentage" step="0.01">
                         </div>
                     </div>                      
                 </form>                
@@ -479,23 +332,74 @@
 
 <div class="page-header">
       <h1>My Diary</h1>
-      </div>
+</div>
 
-<h3 style="text-align:center;"><a href="javascript:void(0)" class="fa fa-caret-left change-date-left"></a>  <span class="selected-date"></span><span class="selected-date-hidden" style="display:none;"></span> <a href="javascript:void(0)" class="fa fa-caret-right change-date-right"></a><span class="input-group date" style="display:initial;"><input type="text" class="form-control change-date-input" style="display:none;"><span class="input-group-addon" style="color:black;background-color:transparent;border:0px;display:initial;"><i class="fa fa-calendar fa-2x"></i></span></span></h3>
-      <div class="container main-contents" style="max-width:70%;">
+<div style="text-align:center;font-size: 24px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;display: block;margin-bottom:5px;">
+
+	<a class="toggle-timer" href="javascript:void(0);" onclick="$('.timer').slideToggle();" title="Open stopwatch"><i style="font-size: 0.85em;color:black;" class="fa fa-clock-o"></i></a>
+	<a class="toggle-calculator" href="javascript:void(0);" onclick="$('.calculator').slideToggle();" title="Open one rep max calculator" style="margin-right:15px"><i style="font-size: 0.8em;color:black;" class="fa fa-calculator"></i></a>
+	<a href="javascript:void(0)" class="fa fa-caret-left change-date-left" title="Go to yesturday"></a>  
+        <div style="display: inline-block;width:380px;"><span class="selected-date"></span></div><span class="selected-date-hidden" style="display:none;"></span> 
+	<a href="javascript:void(0)" class="fa fa-caret-right change-date-right" title="Go to tomorrow"></a>
+	<span class="input-group date" style="display:inline;" title="Open calendar to change diary date">
+		<input type="text" class="form-control change-date-input" style="display:none;">
+		<span class="input-group-addon" style="color:black;background-color:transparent;border:0px;display:inline;" >
+			<i class="fa fa-calendar fa-2x" ></i>
+		</span>
+	</span>
+	
+
+
+</div>
+
+
+
+
+<div class="timer" style="height:75px;margin:0 auto;text-align:center;display:none;">
+    <span id="watchdisplay" style="font-size: 24px;">00:00:00.0</span>
+    <div class="watch-controls">
+        <input type="button" value="Start" class="btn btn-primary start-watch"> 
+        <input type="button" value="Stop" class="btn btn-danger stop-watch">
+        <input type="button" value="Reset" class="btn btn-default reset-watch">
+    </div>
+</div>
+
+
+
+
+
+<div class="calculator" style="height:220px;margin:0 auto;text-align:center;display:none;">
+    
+<form style="width:20%;margin: 0px auto;">
+  <div class="form-group">
+    <label>Weight</label>
+    <input type="number" class="form-control weight-lifted" step="0.01" placeholder="0">
+  </div>
+  <div class="form-group">
+    <label>Reps</label>
+    <input type="number" class="form-control reps-performed" placeholder="0">
+  </div>
+  <button type="submit" class="btn btn-primary calculate-max">Calculate</button>
+  
+</form>
+    
+    Your estimated max is: 
+    <h3 style="margin-top: 0px;"><span class="calculated-max">0</span></h3>
+</div>
+      <div class="container main-contents" style="max-width:80%;">
 	  <div class="row"><div class="col-md-12">&nbsp;</div></div>
 	  <div class="headers row">
         <div class="col-xs-6 exercise" >Exercise</div>
 		<div class="col-xs-1 details reps" style="background-color:#77b2c9; border-top-left-radius:5px; color:#fff; ">Reps</div>
-        <div class="col-xs-1 details set" style="background-color:#77b2c9; border-style: solid;border-color: #fff;border-top: none;border-bottom: none;color:#fff;">Set</div>
-		<div class="col-xs-1 details weight" style="background-color:#77b2c9; border-style: solid;border-color: #fff;border-top: none;border-bottom: none;border-left: none;color:#fff;">Weight</div>
-        <div class="col-xs-1 details rpe" style="background-color:#77b2c9; border-style: solid;border-color: #fff;border-top: none;border-bottom: none;border-left: none;color:#fff;">RPE</div>
-        <div class="col-xs-1 details percentage" style="background-color:#77b2c9; border-top-right-radius:5px;color:#fff; ">%1RM</div>	
-		<div class="col-xs-1 details add">&nbsp;</div>	
+        <div class="col-xs-1 details set" style="background-color:#77b2c9; border-style: solid;border-color: #77b2c9;border-top: none;border-bottom: none;color:#fff;">Set <a  href="javascript:void(0);" data-toggle="tooltip" data-placement="top"  data-original-title="Represents the current set for that diary entry. The latest set is on top. Click the exercise name to expand and see previous sets." style="color:#ccc;" class="fa fa-question-circle"></a></div>
+		<div class="col-xs-1 details weight" style="background-color:#77b2c9; border-style: solid;border-color: #77b2c9;border-top: none;border-bottom: none;border-left: none;color:#fff;">Weight</div>
+        <div class="col-xs-1 details rpe" style="background-color:#77b2c9; border-style: solid;border-color: #77b2c9;border-top: none;border-bottom: none;border-left: none;color:#fff;">RPE <a data-toggle="tooltip"  href="javascript:void(0);" data-placement="top"  data-original-title="RPE stands for 'rated perceived exertion'. This is a scale rating the difficulty of the set (0-10). View the help page to find out more." style="color:#ccc;" class="fa fa-question-circle"></a></div>
+        <div class="col-xs-1 details percentage" style="background-color:#77b2c9; border-top-right-radius:5px;color:#fff; width:15%;">%1RM <a style="color:#ccc;" href="javascript:void(0);" data-toggle="tooltip" data-placement="top"  data-original-title="%1RM is an abbreviation for 'percentage of your one-repetition maximum'. This is used for measuring the intenstiy of a set. View the help page to find out more." class="fa fa-question-circle"></a></div>	
+		<div class="col-xs-1 details add" style="width:13%;">&nbsp;</div>	
       </div>
 	  <hr class="headers-hr" />
 	  <div class="my-exercises"></div>
 	  
 	<div class="row"><div class="col-md-12">&nbsp;</div></div>
-	<div class="row"><div class="col-md-12"><a href="javascript:void(0);" class="btn btn-default btn-circle-main"><i class="fa fa-plus fa-2x" style="line-height: 1.9 !important;"></i></a></div></div>	
+	<div class="row"><div class="col-md-12"><a href="javascript:void(0);" class="btn btn-default btn-circle-main" title="Add an exercise to your diary"><i class="fa fa-plus fa-2x" style="line-height: 1.9 !important;"></i></a></div></div>	
 	  </div>

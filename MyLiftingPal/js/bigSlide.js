@@ -51,6 +51,10 @@
     menu._state = 'closed';
 
     menu.open = function() {
+        $('.navbar-brand').css({'margin-left':'-22px'});
+      $('.open-sidebar-text').html('Close');
+      
+      $('.open-sidebar').attr('src', "images/close.png");     
       menu._state = 'open';
       menu.css(settings.side, '0');
 	  menu.css('width', width);
@@ -61,6 +65,10 @@
     };
 
     menu.close = function() {
+        $('.navbar-brand').css({'margin-left':'0px'});
+      $('.open-sidebar-text').html('My Training');
+      
+      setTimeout(function(){$('.open-sidebar').attr('src', "images/open.png"); },100);         
       menu._state = 'closed';
       menu.css(settings.side, '-0em'/*'-' + width*/);
 	  menu.css('width', '3em'/*'-' + width*/);

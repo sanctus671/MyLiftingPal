@@ -1,16 +1,21 @@
-/*! myliftingpal v1.0.1 | (c) 2014 Taylor Hamling | taylorhamling.com */
+/*! myliftingpal v3.0.0 | (c) 2015 Taylor Hamling | myliftingpal.net */
 
 function mlp(key){
    var self = {};
    self.key = key;
    self.url = 'http://www.myliftingpal.net/api/index.php';
+   self.debug = false;
    self.result = [];
    self.session = '';
+   self.async = false;
 		if (self.session === '' && $.cookie("mlpsession") !== undefined){
 			self.session = $.cookie("mlpsession");
 		} 
     
    function loginCb(data){
+       if (self.debug === true){
+           console.log(data);
+       }       
        self.result = $.parseJSON(data);
        if (self.result["success"] === true){
 	   self.session = self.result["data"]["sessionid"];
@@ -20,6 +25,9 @@ function mlp(key){
    }    
     
    function cb(data){
+       if (self.debug === true){
+           console.log(data);
+       }
        self.result = $.parseJSON(data);
        return self;
    }
@@ -30,61 +38,79 @@ function mlp(key){
         $.ajax({
             type: 'post',
             url: self.url,
-            async: false,
+            async: self.async,
             data: allParamters,
             success: callback,
-			error:  function( jqXHR, textStatus, errorThrown ){console.log(errorThrown)}
+			error:  function( jqXHR, textStatus, errorThrown ){console.log(jqXHR, textStatus, errorThrown);}
       });         
     };
    
    
-   self.login = function(username, password){
-        self.call('authentication','login', {username:username, password: password}, loginCb); 
+   self.login = function(data){
+        //username, password
+        self.call('authentication','login', data, loginCb); 
 		return self;		
    };
+   self.loginFb = function(data){
+        //(fb)id, name, email
+        self.call('authentication','loginfb', data, loginCb); 
+		return self;		
+   };
+   self.loginGp = function(data){
+        //(gp)id, name
+        self.call('authentication','logingp', data, loginCb); 
+		return self;		
+   };   
 
    self.logout = function(){
 		
         self.call('authentication','logout', {}, cb); 
-		self.session = ''
+		self.session = '';
 		$.removeCookie("mlpsession");	
 		return self;		
    };  
     
-   self.createUser = function(email,username,password){
-       self.call('create','createuser', {email:email, username:username, password: password}, cb);
+   self.createUser = function(data){
+	   //email,username,password
+       self.call('create','createuser', data, cb);
 	   return self;
    };
    
   
    
-   self.createexercise = function(name,musclegroup,type){
-       self.call('create','createexercise', {name:name,musclegroup:musclegroup,type:type}, cb);
+   self.createExercise = function(data){
+	   //name,musclegroup,type
+       self.call('create','createexercise', data, cb);
 	   return self;
    };
        
-   self.addstats = function(exerciseid, onerm){
-       self.call('create','addstats', {exerciseid:exerciseid, onerm:onerm}, cb);
+   self.addStats = function(data){
+	   //exerciseid, onerm
+       self.call('create','addstats', data, cb);
 	   return self;
    };
    
-   self.createworkout = function(name){
-       self.call('create','createworkout', {name:name}, cb);
+   self.createWorkout = function(data){
+       //name
+       self.call('create','createworkout', data, cb);
 	   return self;
    };
    
-   self.addexercise = function(exerciseid, workoutid,ordering, reps, sets, rpe, weight, percentage){
-       self.call('create','addexercise', {exerciseid:exerciseid, workoutid:workoutid, ordering:ordering, reps:reps, sets:sets, rpe:rpe, weight:weight, percentage:percentage}, cb);
+   self.addExercise = function(data){
+       //exerciseid, workoutid,ordering, reps, sets, rpe, weight, percentage
+       self.call('create','addexercise', data, cb);
 	   return self;
    };
    
-   self.createprogram = function(name, duration){
-       self.call('create','createprogram', {name:name, duration:duration}, cb);
+   self.createProgram = function(data){
+	   //name, duration
+       self.call('create','createprogram', data, cb);
 	   return self;
    };
    
-   self.addworkout = function(workoutid, programid, ordering, day){
-       self.call('create','addworkout', {workoutid:workoutid, programid:programid, ordering:ordering, day:day}, cb);
+   self.addWorkout = function(data){
+	   //workoutid, programid, ordering, day
+       self.call('create','addworkout', data, cb);
 	   return self;
    };
    
@@ -94,79 +120,118 @@ function mlp(key){
 	   return self;
    };
    
-   self.deleteuser = function(id){
-       self.call('edit','deleteuser', {id:id}, cb);
+   self.addFriend = function(data){
+       //friendid
+       self.call('create','addfriend', data, cb);
+	   return self;
+   };   
+   
+   self.deleteUser = function(data){
+	   //id
+       self.call('edit','deleteuser', data, cb);
 	   return self;
    };
    
-   self.deletexercise = function(id){
-       self.call('edit','deleteexercise', {id:id}, cb);
+   self.deleteExercise = function(data){
+	   //id   
+       self.call('edit','deleteexercise', data, cb);
 	   return self;
    };
    
-   self.removestats = function(id){
-       self.call('edit','removestats', {id:id}, cb);
+   self.removeStats = function(data){
+	   //id   
+       self.call('edit','removestats', data, cb);
 	   return self;
    };
    
-   self.deleteworkout = function(id){
-       self.call('edit','deleteworkout', {id:id}, cb);
+   self.deleteWorkout = function(data){
+	   //id   
+       self.call('edit','deleteworkout', data, cb);
 	   return self;
    };
    
-   self.removeexercise = function(id){
-       self.call('edit','removeexercise', {id:id}, cb);
+   self.removeExercise = function(data){
+	   //id   
+       self.call('edit','removeexercise', data, cb);
 	   return self;
    };
    
-   self.deleteprogram = function(id){
-       self.call('edit','deleteprogram', {id:id}, cb);
+   self.deleteProgram = function(data){
+	   //id   
+       self.call('edit','deleteprogram', data, cb);
 	   return self;
    };
    
-   self.removeworkout = function(id){
-       self.call('edit','removeworkout', {id:id}, cb);
+   self.removeWorkout = function(data){
+	   //id   
+       self.call('edit','removeworkout', data, cb);
 	   return self;
    };
    
    self.removeResults = function(data){
-       //id
+       //id, exerciseid, assigneddate
        self.call('edit','removeresults', data, cb);
 	   return self;
    };
    
-   self.updateuser = function(id,email,username,password){
-       self.call('edit','updateuser', {id:id,email:email,username:username,password:password}, cb);
+   self.removeFriend = function(data){
+       //friendid
+       self.call('edit','removefriend', data, cb);
+	   return self;
+   };   
+   
+   self.updateUser = function(data){
+	   //id,email,username,password, note
+       self.call('edit','updateuser', data, cb);
 	   return self;
    };
    
-   self.updateexercise = function(id, name,musclegroup,type){
-       self.call('edit','updateexercise', {id:id, name:name,musclegroup:musclegroup,type:type}, cb);
+   self.updateProfile = function(data){
+	   //id, userid, weight, gender, age, dp, about, why, goals
+       self.call('edit','updateprofile', data, cb);
 	   return self;
    };
    
-   self.changestats = function(id, exerciseid, onerm){
-       self.call('edit','changestats', {id:id, exerciseid:exerciseid, onerm:onerm}, cb);
+   self.updateSettings = function(data){
+	   //id,userid,emailpreferences,units
+       self.call('edit','updatesettings', data, cb);
+	   return self;
+   };   
+   
+   
+   self.updateExercise = function(data){
+       //id, name,musclegroup,type
+       self.call('edit','updateexercise', data, cb);
 	   return self;
    };
    
-   self.updateworkout = function(id, name){
-       self.call('edit','updateworkout', {id:id, name:name}, cb);
+   self.changeStats = function(data){
+	   //id, exerciseid, onerm
+       self.call('edit','changestats', data, cb);
 	   return self;
    };
    
-   self.changeexercise = function(id, exerciseid, workoutid, ordering, reps, sets, rpe,weight,percentage){
-       self.call('edit','changeexercise', {id:id, exerciseid:exerciseid, workoutid:workoutid, ordering:ordering, reps:reps, sets:sets, rpe:rpe, weight:weight, percentage:percentage}, cb);
+   self.updateWorkout = function(data){
+	   //id, name	
+       self.call('edit','updateworkout', data, cb);
 	   return self;
    };
    
-   self.updateprogram = function(id, name, duration){
-       self.call('edit','updateprogram', {id:id, name:name, duration:duration}, cb);
+   self.changeExercise = function(data){
+       //id, exerciseid, workoutid, ordering, reps, sets, rpe,weight,percentage
+       self.call('edit','changeexercise', data, cb);
 	   return self;
    };
    
-   self.changeworkout = function(id, workoutid, programid, ordering, day){
-       self.call('edit','changeworkout', {id:id, workoutid:workoutid, programid:programid, ordering:ordering, day:day}, cb);
+   self.updateProgram = function(data){
+       //id, name, duration
+       self.call('edit','updateprogram', data, cb);
+	   return self;
+   };
+   
+   self.changeWorkout = function(data){
+       //id, workoutid, programid, ordering, day
+       self.call('edit','changeworkout', data, cb);
 	   return self;
    };
    
@@ -193,28 +258,51 @@ function mlp(key){
 	   return self;
    };
    
-   self.selectstats = function(id, exerciseid){
-       self.call('view','selectstats', {id:id, exerciseid:exerciseid}, cb);
+   self.getRequests = function(data){
+       
+       self.call('view','getrequests', data, cb);
+           return self;
+   }
+   
+   self.selectStats = function(data){
+       //id, exerciseid
+       self.call('view','selectstats', data, cb);
 	   return self;
    };
    
-   self.getworkouts = function(id, name,userid){
-       self.call('view','getworkouts', {id:id, name:name,userid:userid}, cb);
+   self.getData = function(data){
+       //metric, type, exerciseid, timeframe
+       self.call('view','getdata', data, cb);
+	   return self;
+   };    
+   
+   self.getMax = function(data){
+       //exerciseid
+       self.call('view','getmax', data, cb);
+	   return self;
+   };   
+   
+   self.getWorkouts = function(data){
+       //id, name,userid
+       self.call('view','getworkouts', data, cb);
 	   return self;
    };
    
-   self.selectExercises = function(id, workoutid){
-       self.call('view','selectexercises', {id:id, workoutid:workoutid}, cb);
+   self.selectExercises = function(data){
+       //id, workoutid
+       self.call('view','selectexercises', data, cb);
 	   return self;
    };
    
-   self.getprograms = function(id, name, userid){
-       self.call('view','getprograms', {id:id, name:name,userid:userid}, cb);
+   self.getPrograms = function(data){
+       //id, name, userid
+       self.call('view','getprograms', data, cb);
 	   return self;
    };
    
-   self.selectworkouts = function(id, programid){
-       self.call('view','selectworkouts', {id:id, programid:programid}, cb);
+   self.selectWorkouts = function(data){
+       //id, programid
+       self.call('view','selectworkouts', data, cb);
 	   return self;
    };
    
