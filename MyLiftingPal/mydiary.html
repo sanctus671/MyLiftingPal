@@ -1,8 +1,40 @@
 <script src="https://apis.google.com/js/client:platform.js?onload=render" async defer></script>
 <script src="js/auth2.js"></script>
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModal" aria-hidden="true">
 
 
-
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Generate report</h4>
+            </div>
+            <div class="modal-body">
+                <form class="generate-report">
+                <div class=" input-group date" style="display:inline-block;padding: 10px 0;">
+                    <input placeholder="Select start date" title="Start date" type="text" class="start-date form-control" style="width:70%;" required>
+                    <span class="input-group-addon" style="color:black;width:30%;height: 34px;" >
+                        <i class="fa fa-calendar" ></i>
+                    </span>
+                </div>
+                
+                <div class=" input-group date" style="display:inline-block;padding: 10px 0;">
+                    <input placeholder="Select end date" title="End date" type="text" class="end-date form-control" style="width:70%;" required>
+                    <span class="input-group-addon" style="color:black;width:30%;height: 34px;" >
+                        <i class="fa fa-calendar" ></i>
+                    </span>
+                </div>  
+                
+                <button type="submit" style="margin-left: 30%;margin-top: 20px;" class="generate-button btn btn-primary"><i class="fa fa-file-excel-o"></i> Generate</button>
+                <a href="#" class="download-button btn btn-success" style="display:none;margin-left: 20%;margin-top: 20px;"><i class="fa fa-download"></i> Download report</a>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -334,10 +366,24 @@
       <h1>My Diary</h1>
 </div>
 
-<div style="text-align:center;font-size: 24px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;display: block;margin-bottom:5px;">
 
-	<a class="toggle-timer" href="javascript:void(0);" onclick="$('.timer').slideToggle();" title="Open stopwatch"><i style="font-size: 0.85em;color:black;" class="fa fa-clock-o"></i></a>
-	<a class="toggle-calculator" href="javascript:void(0);" onclick="$('.calculator').slideToggle();" title="Open one rep max calculator" style="margin-right:15px"><i style="font-size: 0.8em;color:black;" class="fa fa-calculator"></i></a>
+
+
+
+<div style="text-align:center;font-size: 24px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;display: block;margin-bottom:5px;margin-left: -60px;">
+    <ul style="display:inline;">
+        <li class="dropdown" style="display:inline-block;">
+            <a href="javascript:void(0);" class="dropdown btn btn-default" data-toggle="dropdown" role="button" data-aria-expanded="false" style="margin-right:15px; color:black;"><i class="fa fa-wrench"></i> Diary Tools <i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu " role="menu" style="margin-top: -0.5px;">
+                <li><a class="toggle-timer" href="javascript:void(0);" onclick="$('.timer').slideToggle();"><i style="color:black;" class="fa fa-clock-o"></i> Stopwatch</a></li>
+                <li><a class="toggle-calculator" href="javascript:void(0);" onclick="$('.calculator').slideToggle();"><i style="color:black;" class="fa fa-calculator"></i> 1RM Calculator</a></li>
+                <li><a class="sync-mfp" href="javascript:void(0);" ><i style="color:black;" class="fa fa-exchange"></i> Sync with MyFitnessPal</a></li>
+                <li class="divider"></li>
+                <li><a href="javascript:void(0);" onclick="$('#reportModal').modal()" class="">Generate report</a></li>
+            </ul>    
+        </li>
+    </ul>
+
 	<a href="javascript:void(0)" class="fa fa-caret-left change-date-left" title="Go to yesturday"></a>  
         <div style="display: inline-block;width:380px;"><span class="selected-date"></span></div><span class="selected-date-hidden" style="display:none;"></span> 
 	<a href="javascript:void(0)" class="fa fa-caret-right change-date-right" title="Go to tomorrow"></a>
@@ -352,10 +398,13 @@
 
 </div>
 
-
+<div class="show-sync" style="margin:0 auto;text-align:center;display:none;">
+    Syncing with MyFitnessPal...
+</div>
 
 
 <div class="timer" style="height:75px;margin:0 auto;text-align:center;display:none;">
+    <div style="position:absolute;left:60%;"><button type="button" class="close" onclick="$('.timer').slideToggle();"><i class="fa fa-times"></i></button></div>
     <span id="watchdisplay" style="font-size: 24px;">00:00:00.0</span>
     <div class="watch-controls">
         <input type="button" value="Start" class="btn btn-primary start-watch"> 
@@ -369,7 +418,7 @@
 
 
 <div class="calculator" style="height:220px;margin:0 auto;text-align:center;display:none;">
-    
+    <div style="position:absolute;left:60%;"><button type="button" class="close" onclick="$('.calculator').slideToggle();"><i class="fa fa-times"></i></button></div>    
 <form style="width:20%;margin: 0px auto;">
   <div class="form-group">
     <label>Weight</label>

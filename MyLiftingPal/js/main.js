@@ -81,7 +81,7 @@ if (mlpObject.session === ''){
                     }
                 });   
                 
-                $('.friend-requests').on("click",function(){
+                $('.friend-requests').on("click",function(e){
                     e.preventDefault();
                     load('search', searchPage_Load);
                 });
@@ -176,12 +176,16 @@ if (mlpObject.session === ''){
 
 		
 		// ADD SLIDEDOWN ANIMATION TO DROPDOWN
-		$('.dropdown').on('show.bs.dropdown', function(e){
+		$('.navbar-right .dropdown').on('show.bs.dropdown', function(e){
+                        $('.navbar-right .dropdown i:last').addClass("fa-caret-up");
+                        $('.navbar-right .dropdown i:last').removeClass("fa-caret-down");
 			$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
 		});
 
 		// ADD SLIDEUP ANIMATION TO DROPDOWN
-		$('.dropdown').on('hide.bs.dropdown', function(e){
+		$('.navbar-right .dropdown').on('hide.bs.dropdown', function(e){
+                        $('.navbar-right .dropdown i:last').removeClass("fa-caret-up");
+                        $('.navbar-right .dropdown i:last').addClass("fa-caret-down");                   
 			$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
 		});
                 
@@ -241,6 +245,7 @@ function load(page,pageLoader,data){
     
     //check your not in the middle of creating an exercise
     if ($('.current-page').html() === 'myexercises' && $('.current-page').html() !== page && ($('.myexercises-new-name').val().length > 0 || $('.myexercises-new-muscle :selected').length > 0 || $('.myexercises-new-type :selected').length > 0)){
+        
         $('.accept-move').unbind();
         $('#confirmModal').modal();
         $('.accept-move').on('click', function () {
@@ -248,7 +253,8 @@ function load(page,pageLoader,data){
             $('.myexercises-new-muscle :selected').removeAttr("selected");
             $('.myexercises-new-type :selected').removeAttr("selected");
             load(page,pageLoader,data);
-        });    
+        });   
+        $(".loader").hide();
         return;
     }
     
@@ -261,6 +267,7 @@ function load(page,pageLoader,data){
             $('.new-workout.myexercises-list').html('');
             load(page,pageLoader,data);
         });    
+        $(".loader").hide();
         return;
     }
     
@@ -272,14 +279,20 @@ function load(page,pageLoader,data){
             $('.myprograms-new-name').val('');
             $('.myprograms-new-duration').val('');
             load(page,pageLoader,data);
-        });    
+        }); 
+        $(".loader").hide();
         return;
     }    
     
     $(".loader").show(); 
     
     //change route
-    if (page === 'viewprofile' || page === 'viewdiary'){
+
+    var isCorrect = (page === "mydiary" || typeof data === "undefined" || typeof data['id'] === "undefined"); //checking if user is going through another persons diary
+    if (page === 'viewprofile' || page === 'viewdiary' || !isCorrect){
+        if (!isCorrect){
+            page = 'viewdiary';
+        }
         page = page + "/" + data['id'];}
     $('.current-page').html(page);
     window.location.hash = page;
@@ -323,8 +336,15 @@ function profilePage_Load(data){
             for (var x in profileData["acceptedfriends"]){
                 
                 if (profileData["acceptedfriends"][x]["friendid"] === profileData["userid"]){
-                    $('.profile-info').append('<a href="#viewdiary/' + profileData["userid"] + '" class="btn btn-primary view-diary">View diary</a><br/>');
+                    $('.profile-info').append('<a href="#viewdiary/' + profileData["userid"] + '" class="btn btn-primary view-diary' + profileData["userid"] + '">View diary</a><br/>');
+                    
                     removeText = 'Remove friend';
+                    
+                    $('.view-diary' + profileData["userid"]).on("click",function(e){
+                       e.preventDefault();
+                       load('viewdiary',diaryPage_Load, {'id':profileData["userid"],'date': moment()});
+                       
+                    });
                 }
             }            
             
@@ -492,7 +512,17 @@ function searchPage_Load(){
         else{
             searchPage_UpdateRequests();
         }
-
+        
+        $('.invite-form').on('submit', function(e){
+            e.preventDefault();
+            mlpObject.inviteFriend({email:$('.searchpage-inviteemail').val()});
+            if (mlpObject.result["success"] === true){
+                $('.bottom-right').notify({type: 'info', message: {text:'Invite sent' }}).show();
+            }
+            else{
+                $('.bottom-right').notify({type: 'danger', message: {text:'Failed to send invite' }}).show();
+            }
+        });
         
         
         
@@ -557,13 +587,18 @@ function searchPage_appendHTML(data){
         else{
             html = html + '<div class="search-add"><button onclick="searchPage_AddFriend(' + data["userid"] + ')" class="btn btn-success add-friend" style="margin-bottom: 10px;">Add friend</button></div>';
         }
-            html = html + '<div class="search-view"><a href="#viewprofile/' + data["userid"] + '" class="btn btn-primary view-profile">View profile</a></div>' + 
+            html = html + '<div class="search-view"><a href="#viewprofile/' + data["userid"] + '" class="btn btn-primary view-profile' + data["userid"] + '">View profile</a></div>' + 
         '</div>' + 
     '</div>' + 
     '<hr>  ' ;
     
     $('.search-results').append(html);
     
+    $('.view-profile' + data["userid"]).on("click",function(e){
+       e.preventDefault();
+       load('viewprofile',profilePage_Load, {'id':data["userid"]});
+       
+    });    
     
 
     
@@ -594,13 +629,18 @@ function searchPage_appendRequestHTML(data){
             '<div style="margin-bottom: 10px;"><h3 class="search-username"  style="margin-top: 0px;display:inline;">' + data["username"] + '</h3></div>' + 
             '<div class="search-add"><button onclick="searchPage_AddFriend(' + data["userid"] + ')" class="btn btn-success add-friend" style="margin-bottom: 10px;">Accept</button>' + 
             '<button onclick="searchPage_RemoveFriend(' + data["userid"] + ')" class="btn btn-danger add-friend" style="margin-bottom: 10px;margin-left: 10px;">Reject</button></div>' +             
-            '<div class="search-view"><a href="#viewprofile/' + data["userid"] + '" class="btn btn-primary view-profile">View profile</a></div>' + 
+            '<div class="search-view"><a href="#viewprofile/' + data["userid"] + '" class="btn btn-primary view-profile' + data["userid"]  + '">View profile</a></div>' + 
         '</div>' + 
     '</div>' + 
     '<hr>  ' ;
     
     $('.request-results').append(html);
     
+    $('.view-profile' + data["userid"]).on("click",function(e){
+       e.preventDefault();
+       load('viewprofile',profilePage_Load, {'id':data["userid"]});
+       
+    });
     
     
 }
@@ -1030,10 +1070,10 @@ function myProfile_appendHTML(data){
         }
         html = html + '<div class="col-md-4">' +
                             '<div class="friends-picture" style="border-radius:10px;  float:right;  overflow:hidden;">' +
-                                '<a href="#viewprofile/' + friend["friendid"] + '"><img src="' + friend["dp"] + '" style="width:60px;height:60px; vertical-align:bottom;padding:0px;display: inline-block;" class="friends-dp"></a><br/>' +
+                                '<a href="#viewprofile/' + friend["friendid"] + '" onclick="load(\'viewprofile\',profilePage_Load, {\'id\':' + friend["friendid"] + '});return false;"><img src="' + friend["dp"].replace(/['"]+/g, "") + '" style="width:60px;height:60px; vertical-align:bottom;padding:0px;display: inline-block;" class="friends-dp"></a><br/>' +
                             '</div>' +
                             '<div class="friends-username" style="margin-left: -25px;margin-top: 40px;">' +
-                            '<a href="#viewprofile/' + friend["friendid"] + '" style="" class="friends-username-text">' + friend["username"] + '</a>' +
+                            '<a href="#viewprofile/' + friend["friendid"] + '" onclick="load(\'viewprofile\',profilePage_Load, {\'id\':' + friend["friendid"] + '});return false;" style="" class="friends-username-text">' + friend["username"] + '</a>' +
                             '</div>' +
                        '</div>';
     }
@@ -2657,7 +2697,32 @@ function myPrograms_AdjustProgramsCalendarTable(){
 //click register functions
 function myDiary_MainClickRegisterFunction(){
 
-    
+        $(".sync-mfp").on("click",function(){
+            var w = window.open("mfp.html", "Login to MyFitnessPal", "width=970, height=600");
+            w.addEventListener('load', function(){
+
+                $(w.document.body).find('#mfp-login').submit(function(e){
+                    e.preventDefault();
+                    $('.show-sync').show();
+                    var username = $(w.document.body).find('#mfp-login #username').val();
+                    var password = $(w.document.body).find('#mfp-login #password').val();
+                    w.close();
+                    setTimeout(function(){
+                        mlpObject.syncMfp({username:username,password:password,date: $('.selected-date-hidden').html()});
+                        if (mlpObject.result["success"] === true){
+                            $('.bottom-right').notify({type: 'info', message: {text:'Diary synced with MyFitnessPal' }}).show();
+                        }
+                        else{
+                            $('.bottom-right').notify({type: 'danger', message: {text:'Failed to sync with MyFitnessPal' }}).show();
+                        }
+                        $('.show-sync').hide();
+                    },250);
+
+                });                
+            });
+
+
+        });
         
         function updatedisplay(watch) {
             document.getElementById('watchdisplay').innerHTML = watch.toString() + "." + parseInt(watch.getElapsed().milliseconds/100);
@@ -2696,7 +2761,31 @@ function myDiary_MainClickRegisterFunction(){
             $('.calculated-max').html(max);
             }); 
     
-    
+	$(".generate-report").on("submit",function(e){
+                e.preventDefault();
+                mlpObject.getReport({reportstart:moment($('.start-date').val()).format('YYYY-MM-DD'), reportend:moment($('.end-date').val()).format('YYYY-MM-DD'), reporttype: "excel"});
+                if (mlpObject.result["success"] === false){
+                    $('.bottom-right').notify({type: 'danger', message: {text:'No data found' }}).show();
+                    return;
+                }
+                $('.generate-button').hide();
+                $('.download-button').attr("href", "http://www.myliftingpal.net/api/" + mlpObject.result["data"]);
+                $('.download-button').fadeIn();
+
+	});
+        
+    $('#reportModal').on('hidden.bs.modal', function () {
+        if ($('.download-button').attr("href") !== "#"){
+            var name = $('.download-button').attr("href").split("temp")[1];
+            $('.download-button').attr("href", "#");
+            $('.download-button').hide();
+            $('.generate-button').show();
+            mlpObject.removeReport({name: "temp" + name});
+    }
+        
+
+    });         
+        
 	$(".btn-circle-main").on("click",function(e){
  
                 myDiary_NewModelInitialise();              
@@ -2913,7 +3002,7 @@ function myDiary_MainClickRegisterFunction(){
 		load('mydiary',myDiary_Load, {'date':moment($(".selected-date-hidden").text()).add(1, 'days').calendar('YYYY-MM-DD')});
 	});		
 	$(".change-date-input").on("change",function(e){
-
+                $(".change-date-input").unbind();
 		load('mydiary',myDiary_Load, {'date':moment($(".change-date-input").val())});
 	});
         
@@ -2938,6 +3027,21 @@ function myDiary_Load(data){
                     todayHighlight: true,
                     autoclose: true
                 });
+                
+                // ADD SLIDEDOWN ANIMATION TO DROPDOWN
+                $('.load-into-container .dropdown').unbind();
+		$('.load-into-container .dropdown').on('show.bs.dropdown', function(e){
+                        $($('.load-into-container .dropdown i')[1]).addClass("fa-caret-up");
+                        $($('.load-into-container .dropdown i')[1]).removeClass("fa-caret-down");                    
+			$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+		});
+
+		// ADD SLIDEUP ANIMATION TO DROPDOWN
+		$('.load-into-container .dropdown').on('hide.bs.dropdown', function(e){
+                        $($('.load-into-container .dropdown i')[1]).removeClass("fa-caret-up");
+                        $($('.load-into-container .dropdown i')[1]).addClass("fa-caret-down");                    
+			$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+		});
                 
                
                 
@@ -2997,7 +3101,7 @@ function myDiary_Load(data){
 function myDiary_ExerciseClickRegisterFunction(e){
 
 
-	parent = $(e);
+	var parent = $(e);
 	if ($(e).hasClass("fa")){
 		parent =  $(e).parent();
 	}
@@ -3189,7 +3293,7 @@ function myDiary_NewModelInitialisePrograms(){
             myDiary_NewModelAddSearchPrograms(searchedPrograms, 1);
         }
         else{
-            $('.modal-search-results-programs').html('No results for this program. <a href="javascript:void(0);" onclick="$(\'body\').removeClass(\'modal-open\');$(\'body\').css(\'padding-right\',\'0px\');$(\'.loader\').show();myPrograms_Load();">Create it?</a>');
+            $('.modal-search-results-programs').html('No results for this program. <a href="javascript:void(0);" onclick="$(\'body\').removeClass(\'modal-open\');$(\'body\').css(\'padding-right\',\'0px\');$(\'.loader\').show();load(\'myprograms\',myPrograms_Load);">Create it?</a>');
       
         }
         
@@ -3332,7 +3436,8 @@ function myDiary_NewModelAddSearchPrograms(searchedPrograms, page){
         
         }                   
     });        
-    
+     
+ 
     
     if (pages === 1){
         $('.pagination.search-programs').css({"padding-left":"92px"});
@@ -3370,10 +3475,10 @@ function myDiary_NewModelChangeSearchPagePrograms(pageNumber){
 
 
 //TODO
-    if (mlpObject.getWorkouts({name:searchTerm}).result["success"] === true){
-        var searchedWorkouts = mlpObject.result["data"];
+    if (mlpObject.getPrograms({name:searchTerm}).result["success"] === true){
+        var searchedPrograms = mlpObject.result["data"];
 
-        myDiary_NewModelAddSearchPrograms(searchedWorkouts, pageNumber);
+        myDiary_NewModelAddSearchPrograms(searchedPrograms, pageNumber);
     }
     
     
@@ -3526,9 +3631,9 @@ function myDiary_NewModelChangeRecentPagePrograms(pageNumber){
     }
 
     //TODO
-    if (mlpObject.selectResults({limit:35,type:"workouts"}).result["success"] === true){
-    var recentWorkouts = mlpObject.result["data"];
-    myDiary_NewModelAddRecentPrograms(recentWorkouts, pageNumber);
+    if (mlpObject.selectResults({limit:35,type:"programs"}).result["success"] === true){
+    var recentPrograms = mlpObject.result["data"];
+    myDiary_NewModelAddRecentPrograms(recentPrograms, pageNumber);
     }
     
     
@@ -3575,7 +3680,7 @@ function myDiary_NewModelInitialiseWorkouts(radio){
         }
         else{
 
-            $('.modal-search-results-workouts').html('No results for this workout. <a href="javascript:void(0);" onclick="$(\'body\').removeClass(\'modal-open\');$(\'body\').css(\'padding-right\',\'0px\');$(\'.loader\').show();myWorkouts_Load();">Create it?</a>');
+            $('.modal-search-results-workouts').html('No results for this workout. <a href="javascript:void(0);" onclick="$(\'body\').removeClass(\'modal-open\');$(\'body\').css(\'padding-right\',\'0px\');$(\'.loader\').show();load(\'myworkouts\',myWorkouts_Load);">Create it?</a>');
             
         }
         
@@ -4252,7 +4357,7 @@ function myDiary_NewModelAddSearch(searchedExercises, page){
     var exerciseId;
     var x = 0;
     if (Object.keys(searchedExercises).length < 1){
-        html = html + 'No results for this exercise. <a href="javascript:void(0);" onclick="$(\'body\').removeClass(\'modal-open\');$(\'body\').css(\'padding-right\',\'0px\');$(\'.loader\').show();myExercises_Load();">Create it?</a>';
+        html = html + 'No results for this exercise. <a href="javascript:void(0);" onclick="$(\'body\').removeClass(\'modal-open\');$(\'body\').css(\'padding-right\',\'0px\');$(\'.loader\').show();load(\'myexercises\',myExercises_Load);">Create it?</a>';
     }
     for (exerciseId in searchedExercises){   
         if (x >= 6*page){break;}
@@ -4458,12 +4563,26 @@ function myDiary_appendHTML(dataArray){
 		
 function myDiary_generateHTML(dataArrayOriginal){
         var dataArray = JSON.parse(JSON.stringify(dataArrayOriginal)); //clone array so pops dont affect the global array
+        var totalVolume = 0;
+
+        for (var index in dataArrayOriginal){
+            totalVolume += parseInt(dataArrayOriginal[index]["reps"]) * 1 * parseInt(dataArrayOriginal[index]["weight"]);
+        }
 	var lastSet = dataArray.pop();
+        console.log(dataArray.length);
 	var constructedHTML = "";
         if (lastSet["notes"] === null){lastSet["notes"] = '';}
 	constructedHTML = constructedHTML + '<div class="added-exercise ' + lastSet["exercise"].split(" ").join("") + ' exercise-' + lastSet["exerciseid"] + '">' +
 		'<div class="added row set-' + lastSet["id"] + '">' +
-			'<div class="col-xs-6 exercise"><a href="javascript:void(0);" title="Expand all sets" class="topset old ' + lastSet["exercise"].split(" ").join("") + '">' + lastSet["exercise"] + ' <i class="fa fa-caret-down"></i></a></div>' +	
+			'<div class="col-xs-6 exercise">';
+                        if (dataArray.length > 0 ){
+                            constructedHTML = constructedHTML + '<a href="javascript:void(0);" title="Expand all sets" class="topset old ' + lastSet["exercise"].split(" ").join("") + '">' + lastSet["exercise"] + ' <i class="fa fa-caret-down"></i></a>';
+                        }
+                        else{
+                            constructedHTML = constructedHTML + '<span class="topset old ' + lastSet["exercise"].split(" ").join("") + '"">' + lastSet["exercise"] + '</span>';
+                        }
+                        
+                        constructedHTML = constructedHTML + '</div>' +	
 			'<div class="col-xs-1 details exerciseid" style="display:none;">' + lastSet["exerciseid"] + '</div>' +
                         '<div class="col-xs-1 details id" style="display:none;">' + lastSet["id"] + '</div>' +
                         '<div class="col-xs-1 details reps">' + lastSet["reps"] + '</div>' +
@@ -4472,10 +4591,10 @@ function myDiary_generateHTML(dataArrayOriginal){
 			'<div class="col-xs-1 details rpe">' + lastSet["rpe"] + '</div>' +
 			'<div class="col-xs-1 details percentage">' + lastSet["onerm"] + '%</div>' +
 			'<div class="col-xs-1 details add">' + 
-				'<a href="javascript:void(0);" class="btn btn-default btn-circle added" title="Add a new set to this exercise" style="margin-right: 2px;"><i class="fa fa-plus" ></i></a>' + 
+				'<a href="javascript:void(0);" class="btn btn-default btn-circle added" title="Add a new set to this exercise" style="margin-right: 2px;" data-toggle="button"><i class="fa fa-plus" ></i></a>' + 
                                 '<a href="javascript:void(0);" class="btn btn-danger btn-circle exercise-delete" title="Delete exercise from your diary" style="margin-right: 2px;"><i class="fa fa-times"></i></a>' + 
-				'<a href="javascript:void(0);" class="btn btn-success btn-circle log" title="View your log for this exercise" style="margin-right: 2px;"><i class="fa fa-book"></i></a>' + 
-				'<a href="javascript:void(0);" class="btn btn-primary btn-circle exercise-settings" title="View settings for this set"><i class="fa fa-cog"></i></a>' + 
+				'<a href="javascript:void(0);" class="btn btn-success btn-circle log" title="View exercise log" style="margin-right: 2px;" data-toggle="button"><i class="fa fa-book"></i></a>' + 
+				'<a href="javascript:void(0);" class="btn btn-primary btn-circle exercise-settings" title="View settings for this set" data-toggle="button"><i class="fa fa-cog"></i></a>' + 
                                 
 			'</div>' + 		
         '</div>' +
@@ -4505,9 +4624,14 @@ function myDiary_generateHTML(dataArrayOriginal){
 			'</div></form>'	+	
         '</div>' +  
 	    '<div class="view-log row">' + 
+                        '<div class="row" style="text-align:left;padding-left:15px;">' + 
+                            '<div class="col-xs-4 col-xs-offset-7" style="margin-left: 60.5%;">' + 
+                                '<span style="font-size: 16px;">Current Volume Total: ' + totalVolume + $(".units").html() + ' <a href="#mydiary" title="Reload diary" onclick="load(\'mydiary\', myDiary_Load,{date:\''+ $('.selected-date-hidden').html() + '\'});"><i class="fa fa-refresh"></i></a></span>' + 
+                            '</div>'  +  
+                        '</div>'  +    
 			'<div class="col-xs-6 headers">Exercise Log</div>' + 
 			'<form role="form"><div class="form-group">' + 
-			'<div class="col-xs-5"><textarea class="form-control note" rows="5" placeholder="Write Notes">' + lastSet["notes"] + '</textarea></div>' + 
+			'<div class="col-xs-5"><textarea class="form-control note" rows="5" placeholder="Write notes about this set...">' + lastSet["notes"] + '</textarea></div>' + 
 			'</div></form>' + 	
 			'<div class="col-xs-4 history"><div class="headers">Records <i class="fa fa-trophy"></i></div>' + 
 					'<div class="row records">' + lastSet["records"][0] + '</div>' + 
@@ -4544,7 +4668,7 @@ function myDiary_generateHTML(dataArrayOriginal){
 				'<div class="col-xs-1 details rpe">' + oldSet["rpe"] + '</div>' +
 				'<div class="col-xs-1 details percentage">' + oldSet["onerm"] + '%</div>' +
 				'<div class="col-xs-1 details add">' +
-					'<a href="javascript:void(0);" class="btn btn-primary btn-circle exercise-settings" title="View settings for this set"><i class="fa fa-cog"></i></a>' +
+					'<a href="javascript:void(0);" class="btn btn-primary btn-circle exercise-settings" title="View settings for this set" data-toggle="button"><i class="fa fa-cog"></i></a>' +
 				'</div>' +			
             '</div>' +	  
 			'<div class="view-exercise-settings row">' +	
@@ -4622,6 +4746,10 @@ function checkURL(url) {
 
 function moveScroller(anchor, main) {
     var move = function() {
+        if ($(anchor).length < 1){
+            $(window).unbind();
+            return;
+        }
         var st = $(window).scrollTop();
         var ot = $(anchor).offset().top;
         var s = $(main);
@@ -4735,7 +4863,8 @@ function setupRoutes(){
     }
     
     $(window).on('hashchange', function(e) {
-        if (window.location.hash.substr(1).split("/")[0] !== $('.current-page').html()){
+        if (window.location.hash.substr(1).split("/")[0] !== $('.current-page').html().split("/")[0]){
+
             location.reload();
         }
     });

@@ -312,6 +312,35 @@ function mlp(key){
 	   return self;
    };
    
+   self.getReport = function(data){
+       //userid, reportstart, reportend, reporttype
+       self.call('view','getreport', data, cb);
+	   return self;
+   };  
+   
+   self.removeReport = function(data){
+       //filename
+       self.call('edit','removereport', data, cb);
+	   return self;
+   };   
+   
+   self.resetPassword = function(data){
+       //email
+       self.call('edit','resetpassword', data, cb);
+	   return self;
+   };   
+   
+   self.inviteFriend = function(data){
+       //email
+       self.call('create','invite', data, cb);
+	   return self;
+   };   
+   
+   self.syncMfp = function(data){
+       //(mfp) username, (mfp) password, date
+       self.call('create','syncmfp', data, cb);
+	   return self;
+   };    
 
    return self;
 }

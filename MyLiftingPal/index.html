@@ -65,21 +65,23 @@
   </div>
 </div>
 
-
+<div class="wrapper">
 <div class="header-image">	
 	
 	<div class="content">
             <div class="row">
-                 <a href="index.html"><div style="float: none; margin: 0 auto; text-align:center; height:200px; padding-top:10px; background-image: url('images/header.svg'); background-repeat: no-repeat; background-size: 1000px 428.5px; background-position: center;margin-left: 6em;  "></div></a>
+                 <a href="index.html"><div style="float: none; margin: 0 auto; text-align:center; height:120px; padding-top:10px; background-image: url('images/header.svg'); background-repeat: no-repeat; background-size: 1000px 428.5px; background-position: center;margin-left: 10em;  "></div></a>
             </div>
-            <div class="app-icons" style="float: right;margin-top: -175px;padding-right: 40px;">
-                <a href="http://store.apple.com" target="_blank"><img src="images/download-on-ios.png" alt="Download on IOS" style="width: 150px;"/></a>
-                <a href="http://play.google.com/store" target="_blank"><img src="images/download-on-android.png" alt="Download on Android" style="width: 140px;"/></a>
+            <div class="app-icons" style="float: right;margin-top: -149px;padding-right: 40px;">
+                <div style="position: absolute;right: 10px;top: -10px;"><img style="width: 200px;height: 140px;" src="images/soon.png" alt="Coming Soon"/></div>
+                
+                <a href="http://store.apple.com" target="_blank"><img src="images/download-on-ios.png" alt="Download on IOS" style="width: 150px;margin-top:20px;padding-bottom:0px;"/></a>
+                <a href="http://play.google.com/store" target="_blank"><img src="images/download-on-android.png" alt="Download on Android" style="width: 140px;padding-bottom:0px;padding-top:5px;"/></a>
             </div>
             <div class="app-icons-arrow-open" style="float: right;margin-top: -70px;padding-right: 10px;" title="Get MyLiftingPal on your phone">
                 <a href="javascript:void(0);" onclick="$('.app-icons').toggle('slow'); $('.app-icons-arrow-open').hide(); $('.app-icons-arrow-close').show('fast');"><i class="fa fa-mobile fa-5x"></i></a>
             </div>
-            <div class="app-icons-arrow-close" style="float: right;margin-top: -120px;padding-right: 200px;display:none;">
+            <div class="app-icons-arrow-close" style="float: right;margin-top: -90px;padding-right: 200px;display:none;">
                 <a href="javascript:void(0);" onclick="$('.app-icons').toggle('slow'); $('.app-icons-arrow-open').show('slow'); $('.app-icons-arrow-close').hide();"><i class="fa fa-times-circle fa-4x"></i></a>
             </div>            
         </div>
@@ -97,7 +99,7 @@
     <ul class="collapse navbar-collapse nav navbar-nav navbar-right"  id="userstuff">
 	        <li class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" data-aria-expanded="false"><div class="username" style="display:inline;">Not Loaded</div> <i class="fa fa-user"></i> <i class="fa fa-caret-down"></i></a>
-          <ul class="dropdown-menu " role="menu">
+          <ul class="user-menu dropdown-menu " role="menu">
             <li><a href="#profile" class="user-profile">Profile</a></li>
             <li><a href="#settings" class="user-settings">Settings</a></li>
             <li class="divider"></li>
@@ -112,7 +114,7 @@
         <li><a href="http://facebook.com/myliftingpal" target="_blank" class="icon-button facebook" style="margin-left: 30px;" title="Visit our Facebook page"><i class="fa fa-facebook icon-facebook"></i><span></span></a></li>
         <li><a href="http://www.google.com/+MyliftingpalNetwork" target="_blank" class="icon-button google-plus" style="margin-left: 30px;" title="Visit our Google+ page"><i class="fa fa-google-plus icon-google-plus"></i><span></span></a></li>
         <li><a href="http://twitter.com/myliftingpal" target="_blank" class="icon-button twitter" style="margin-right:50px;margin-left: 30px;" title="Visit our Twitter page"><i class="fa fa-twitter icon-twitter"></i><span></span></a></li>
-        
+        <li><a href="http://www.myliftingpal.net/blog/" target="_blank" class="blog" title="Blog"><i class="fa fa fa-rss icon-blog"></i> &nbsp;Blog </a> </li>
         <li><a href="#help" class="help" title="Help"><i class="fa fa-info icon-info"></i> &nbsp;Help </a> </li>
         <li><a href="#search" class="friend-requests" title="Friend requests" style="margin-right: -20px;margin-left: 20px;"><i class="fa fa-users"></i> <span class="badge request-total" style="">0</span></a> </li>
     </ul>
@@ -149,10 +151,14 @@
 	
 <div class='notifications bottom-right'></div>	
  <div class="footer wrap push">
+     <div class="footer-content">
 	<p><a href="#terms" class="terms">Terms</a> | <a href="#privacy" class="privacy">Privacy</a> | <a href="#contact" class="contactus">Contact Us</a> | <a href="#api" class="api">API</a> </p>
    <p>Copyright <i class="fa fa-copyright"></i> 2014-2015 MyLiftingPal</p>
+     </div>
+
  </div>
 
+</div>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.addons.min.js"></script>
@@ -168,7 +174,7 @@
 <script type="text/javascript" src="js/mlp.min.js"></script>
 
 <script type="text/javascript" src="js/ga.js"></script>
-<script type="text/javascript" src="js/main.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,5 @@
+var mlpObject = mlp('d22c3cf2949cd85a21ddcf725f71dcef');
+
 $(document).ready(function(){
     //test for mobile
     var isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
@@ -26,18 +28,16 @@ $(document).ready(function(){
     $('.forgot-pass').on("click", function(){
         $('#forgotModal').modal();
     }); 
-    
-    $('.reset-password').on("click", function(){
-        //console.log("send reset email");
+
+    $('.reset-password').on("click",function(){
+        mlpObject.resetPassword({email:$('.reset-data').val()});
     });
-    
-    
     
 });   
     
     
     
-var mlpObject = mlp('d22c3cf2949cd85a21ddcf725f71dcef');
+
 
 
 
@@ -128,7 +128,4 @@ $(".login-form").on("submit",function(e){
 	}
 });
 
-$(".forgot-pass").click(function(){
-
-});
 
